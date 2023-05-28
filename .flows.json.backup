@@ -1,0 +1,1227 @@
+[
+    {
+        "id": "07021e24ebc3f637",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c137f9ae9b5be96b",
+        "type": "tab",
+        "label": "Create Resources",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "109b7a08f339674a",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e59738d989d54b6",
+        "type": "subflow",
+        "name": "Create Table Rules",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "75c09e600c694c46"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 280,
+                "y": 980,
+                "wires": [
+                    {
+                        "id": "3771017c6ff47a5f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "1314f78d13357201",
+        "type": "subflow",
+        "name": "Create Table Projects",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "705577d5392af509"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 280,
+                "y": 640,
+                "wires": [
+                    {
+                        "id": "3b650ecdc2dca7b9",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "082636f279771408",
+        "type": "subflow",
+        "name": "Create example Table",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "7cb40c28e0b111e0"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 400,
+                "y": 540,
+                "wires": [
+                    {
+                        "id": "b2cabb3468966bd4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "1e9e2287cf2edeca",
+        "type": "subflow",
+        "name": "Create Pets API Project",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "0c53c7b50aca5332"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 340,
+                "y": 520,
+                "wires": [
+                    {
+                        "id": "2a4ec9dded10b9d4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "8b9887394539e844",
+        "type": "appwrite-config",
+        "endpoint": "https://cloud.appwrite.io/v1",
+        "project": "api-gateway",
+        "apikey": "7af2626e01797a2f1598c3eeff7b1f24c7b12fb6a03f485ca8f94dfa193e80cb1063d09dec892023d3270d157f8cca092d4b04618c9a3384ec5cbc9695aec458bf40d272b1bb4e3eaf6507ef338d6e9501a06ec5077855e70c0685cb6de77aca260e29b4b89c96d686fba6a55ac68a1d219b9dc1144a21d754bddfaec9906b8d"
+    },
+    {
+        "id": "25e3266b912fbed8",
+        "type": "appwrite-config",
+        "z": "082636f279771408",
+        "endpoint": "https://cloud.appwrite.io/v1",
+        "project": "pets",
+        "apikey": "92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51"
+    },
+    {
+        "id": "75c09e600c694c46",
+        "type": "com.autana.createTable",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "skipExists": true,
+        "name": "",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "b886d808fa66a10b"
+            ]
+        ]
+    },
+    {
+        "id": "b886d808fa66a10b",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "command",
+        "size": "10",
+        "required": false,
+        "defaultValue": "GET",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "eb97da16d623597f"
+            ]
+        ]
+    },
+    {
+        "id": "eb97da16d623597f",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "path",
+        "size": 255,
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "d42a81dd6e4ba640"
+            ]
+        ]
+    },
+    {
+        "id": "456afbec95b14cdf",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "actionId",
+        "size": "100",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "2f2fbf207b29224a"
+            ]
+        ]
+    },
+    {
+        "id": "2f2fbf207b29224a",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "actionType",
+        "size": "50",
+        "required": false,
+        "defaultValue": "DOCUMENT",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 560,
+        "wires": [
+            [
+                "f3fd93bbf6ea4f13"
+            ]
+        ]
+    },
+    {
+        "id": "840f8cf003cf6d35",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "GET, POST, PUT, DELETE",
+        "info": "",
+        "x": 650,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "549710032319e38b",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "/pets/:petId",
+        "info": "",
+        "x": 610,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bd2167b4134e05bf",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "read_pet_by_id",
+        "info": "",
+        "x": 620,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b1b8727c7a8d7e81",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "DOCUMENT, STORAGE, FUNCTION",
+        "info": "",
+        "x": 680,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d42a81dd6e4ba640",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "projectId",
+        "size": "100",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "456afbec95b14cdf"
+            ]
+        ]
+    },
+    {
+        "id": "f3fd93bbf6ea4f13",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "databaseId",
+        "size": "100",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 640,
+        "wires": [
+            [
+                "d3e9d732435093e3"
+            ]
+        ]
+    },
+    {
+        "id": "136b476557a22c71",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "{PROJECT_ID}",
+        "info": "",
+        "x": 620,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d3e9d732435093e3",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "collectionId",
+        "size": "100",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 720,
+        "wires": [
+            [
+                "2b76cb889312b797"
+            ]
+        ]
+    },
+    {
+        "id": "2b76cb889312b797",
+        "type": "com.autana.createIndex",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "indexName": "uk_command_path",
+        "indexType": "unique",
+        "columns": "command,path",
+        "orders": "ASC",
+        "skipExists": true,
+        "name": "",
+        "x": 390,
+        "y": 800,
+        "wires": [
+            [
+                "3771017c6ff47a5f"
+            ]
+        ]
+    },
+    {
+        "id": "3771017c6ff47a5f",
+        "type": "com.autana.createIndex",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "indexName": "uk_projectId_actionId",
+        "indexType": "unique",
+        "columns": "projectId,actionId",
+        "orders": "ASC",
+        "skipExists": true,
+        "name": "",
+        "x": 400,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "30412556535de83d",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "{DATABASE_ID}",
+        "info": "",
+        "x": 620,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "110211a8217788de",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "{COLLECTION_ID}",
+        "info": "",
+        "x": 630,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "32da5cd827aa05d8",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "command and path are unique",
+        "info": "",
+        "x": 730,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "aa927cac287b8214",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "projectId and actionId are unique",
+        "info": "",
+        "x": 730,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "705577d5392af509",
+        "type": "com.autana.createTable",
+        "z": "1314f78d13357201",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "projects",
+        "skipExists": true,
+        "name": "",
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "3aa96748c86a35cb"
+            ]
+        ]
+    },
+    {
+        "id": "3aa96748c86a35cb",
+        "type": "com.autana.StringColumn",
+        "z": "1314f78d13357201",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "endpoint",
+        "size": "255",
+        "required": false,
+        "defaultValue": "https://cloud.appwrite.io/v1",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 300,
+        "wires": [
+            [
+                "2f1fab63cb7ad966"
+            ]
+        ]
+    },
+    {
+        "id": "2f1fab63cb7ad966",
+        "type": "com.autana.StringColumn",
+        "z": "1314f78d13357201",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "projectId",
+        "size": "100",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "1030c05996b3eda5"
+            ]
+        ]
+    },
+    {
+        "id": "1030c05996b3eda5",
+        "type": "com.autana.StringColumn",
+        "z": "1314f78d13357201",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "apiKey",
+        "size": "1024",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "3b650ecdc2dca7b9"
+            ]
+        ]
+    },
+    {
+        "id": "cd1c1b97ae901a02",
+        "type": "comment",
+        "z": "1314f78d13357201",
+        "name": "https://cloud.appwrite.io/v1",
+        "info": "",
+        "x": 660,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "134a236eb37f1ae1",
+        "type": "comment",
+        "z": "1314f78d13357201",
+        "name": "projectId1234",
+        "info": "",
+        "x": 610,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6c1898901cef1501",
+        "type": "comment",
+        "z": "1314f78d13357201",
+        "name": "{APIKEY}",
+        "info": "",
+        "x": 600,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3b650ecdc2dca7b9",
+        "type": "com.autana.createIndex",
+        "z": "1314f78d13357201",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "indexName": "ix_projectId",
+        "indexType": "unique",
+        "columns": "projectId",
+        "orders": "ASC",
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "98c7a2f37dd2f099",
+        "type": "comment",
+        "z": "1314f78d13357201",
+        "name": "projectID is unique",
+        "info": "",
+        "x": 630,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7cb40c28e0b111e0",
+        "type": "com.autana.createTable",
+        "z": "082636f279771408",
+        "appwriteConfig": "25e3266b912fbed8",
+        "databaseName": "example",
+        "tableName": "pets",
+        "skipExists": true,
+        "name": "",
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "f587a6b361b3bb69"
+            ]
+        ]
+    },
+    {
+        "id": "f587a6b361b3bb69",
+        "type": "com.autana.StringColumn",
+        "z": "082636f279771408",
+        "appwriteConfig": "25e3266b912fbed8",
+        "databaseName": "example",
+        "tableName": "",
+        "key": "name",
+        "size": "50",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "2933dd34ce0143bd"
+            ]
+        ]
+    },
+    {
+        "id": "2933dd34ce0143bd",
+        "type": "com.autana.StringColumn",
+        "z": "082636f279771408",
+        "appwriteConfig": "25e3266b912fbed8",
+        "databaseName": "example",
+        "tableName": "",
+        "key": "type",
+        "size": "50",
+        "required": true,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "0a2acda6824d7a86"
+            ]
+        ]
+    },
+    {
+        "id": "0a2acda6824d7a86",
+        "type": "com.autana.StringColumn",
+        "z": "082636f279771408",
+        "appwriteConfig": "25e3266b912fbed8",
+        "databaseName": "example",
+        "tableName": "",
+        "key": "gender",
+        "size": "1",
+        "required": false,
+        "defaultValue": "M",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 500,
+        "y": 340,
+        "wires": [
+            [
+                "b2cabb3468966bd4"
+            ]
+        ]
+    },
+    {
+        "id": "2155837ab5ec604f",
+        "type": "comment",
+        "z": "082636f279771408",
+        "name": "woofie",
+        "info": "",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "451fbcc9a1a7dcaf",
+        "type": "comment",
+        "z": "082636f279771408",
+        "name": "dog",
+        "info": "",
+        "x": 730,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1fb12bf93e82ebdf",
+        "type": "comment",
+        "z": "082636f279771408",
+        "name": "M",
+        "info": "",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b628db9660107943",
+        "type": "comment",
+        "z": "082636f279771408",
+        "name": "5",
+        "info": "",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "b2cabb3468966bd4",
+        "type": "com.autana.IntegerColumn",
+        "z": "082636f279771408",
+        "appwriteConfig": "25e3266b912fbed8",
+        "databaseName": "example",
+        "tableName": "",
+        "key": "age",
+        "min": "",
+        "max": "",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 490,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a4ec9dded10b9d4",
+        "type": "com.autana.insertRow",
+        "z": "1e9e2287cf2edeca",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "projects",
+        "name": "",
+        "docId": "pets",
+        "x": 420,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64ba940fbc89363c",
+        "type": "change",
+        "z": "1e9e2287cf2edeca",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"projectId\":\"pets\",\"apiKey\":\"92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "2a4ec9dded10b9d4"
+            ]
+        ]
+    },
+    {
+        "id": "0c53c7b50aca5332",
+        "type": "com.autana.readTable",
+        "z": "1e9e2287cf2edeca",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "projects",
+        "name": "find pets project",
+        "query": "equal(\"projectId\",\"pets\")",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "99bed4666b855b0d"
+            ]
+        ]
+    },
+    {
+        "id": "99bed4666b855b0d",
+        "type": "switch",
+        "z": "1e9e2287cf2edeca",
+        "name": "pet exists ?",
+        "property": "payload.total",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "b226709f78033188"
+            ],
+            [
+                "64ba940fbc89363c"
+            ]
+        ]
+    },
+    {
+        "id": "b226709f78033188",
+        "type": "debug",
+        "z": "1e9e2287cf2edeca",
+        "name": "project pets already exists",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1f5e86cf01c16650",
+        "type": "subflow:7e59738d989d54b6",
+        "z": "c137f9ae9b5be96b",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "33b0b6bc16372a91",
+                "5e65ef3eb994afb3"
+            ]
+        ]
+    },
+    {
+        "id": "fc35ee2aa580bf1f",
+        "type": "inject",
+        "z": "c137f9ae9b5be96b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "1f5e86cf01c16650"
+            ]
+        ]
+    },
+    {
+        "id": "33b0b6bc16372a91",
+        "type": "debug",
+        "z": "c137f9ae9b5be96b",
+        "name": "Create Table Rules",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5e65ef3eb994afb3",
+        "type": "subflow:1314f78d13357201",
+        "z": "c137f9ae9b5be96b",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "42c79aa332b04941",
+                "49b9108d6c75c15b"
+            ]
+        ]
+    },
+    {
+        "id": "42c79aa332b04941",
+        "type": "debug",
+        "z": "c137f9ae9b5be96b",
+        "name": "Create Table Projects",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "49b9108d6c75c15b",
+        "type": "subflow:082636f279771408",
+        "z": "c137f9ae9b5be96b",
+        "name": "",
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "1033d595fa79c970",
+                "f224c9d750605261"
+            ]
+        ]
+    },
+    {
+        "id": "1033d595fa79c970",
+        "type": "debug",
+        "z": "c137f9ae9b5be96b",
+        "name": "Create Table Example",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f224c9d750605261",
+        "type": "subflow:1e9e2287cf2edeca",
+        "z": "c137f9ae9b5be96b",
+        "name": "",
+        "x": 320,
+        "y": 480,
+        "wires": [
+            [
+                "21384e6b0e98a3ba"
+            ]
+        ]
+    },
+    {
+        "id": "21384e6b0e98a3ba",
+        "type": "debug",
+        "z": "c137f9ae9b5be96b",
+        "name": "Create Pets API Project",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b2e3a7ab3d63e6f4",
+        "type": "inject",
+        "z": "109b7a08f339674a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "095d62752d790492"
+            ]
+        ]
+    },
+    {
+        "id": "f26761e8d0ade48c",
+        "type": "debug",
+        "z": "109b7a08f339674a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "95bdadead4830db0",
+        "type": "com.autana.insertRow",
+        "z": "109b7a08f339674a",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "projects",
+        "name": "",
+        "docId": "pets",
+        "x": 440,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f801fdf780be4978",
+        "type": "change",
+        "z": "109b7a08f339674a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"projectId\":\"pets\",\"apiKey\":\"92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 540,
+        "wires": [
+            [
+                "95bdadead4830db0"
+            ]
+        ]
+    },
+    {
+        "id": "4563ec0fbfe26533",
+        "type": "com.autana.readTable",
+        "z": "109b7a08f339674a",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "find rule by command and path",
+        "query": "",
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "9370c51e4627f64f"
+            ]
+        ]
+    },
+    {
+        "id": "671d6515fbb68154",
+        "type": "switch",
+        "z": "109b7a08f339674a",
+        "name": "pet exists ?",
+        "property": "payload.total",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 460,
+        "wires": [
+            [
+                "060e882b88c1ce9b"
+            ],
+            [
+                "f801fdf780be4978"
+            ]
+        ]
+    },
+    {
+        "id": "060e882b88c1ce9b",
+        "type": "debug",
+        "z": "109b7a08f339674a",
+        "name": "project pets already exists",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "095d62752d790492",
+        "type": "change",
+        "z": "109b7a08f339674a",
+        "name": "set params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "command",
+                "pt": "msg",
+                "to": "GET",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "path",
+                "pt": "msg",
+                "to": "/pets/",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "'equal(\"command\",\"' & command & '\"),equal(\"path\",\"' & path & '\")'",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "4563ec0fbfe26533"
+            ]
+        ]
+    },
+    {
+        "id": "9370c51e4627f64f",
+        "type": "debug",
+        "z": "109b7a08f339674a",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 220,
+        "wires": []
+    }
+]
