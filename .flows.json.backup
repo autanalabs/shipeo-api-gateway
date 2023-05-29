@@ -344,6 +344,43 @@
         "color": "#DDAA99"
     },
     {
+        "id": "69b3865e779a9ae0",
+        "type": "subflow",
+        "name": "apply inboundTransform",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "7d6a8354b237ee95"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 660,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "f0935c1067b16a8d",
+                        "port": 0
+                    },
+                    {
+                        "id": "7d6a8354b237ee95",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "8b9887394539e844",
         "type": "appwrite-config",
         "endpoint": "https://cloud.appwrite.io/v1",
@@ -1362,7 +1399,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"{'docId': req.autana.pathParams.petId}\"}",
                 "tot": "json"
             }
         ],
@@ -1607,7 +1644,7 @@
                 "t": "set",
                 "p": "rule",
                 "pt": "msg",
-                "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation\t}",
+                "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation,\t   \"inboundTransform\": payload.inboundTransform,\t   \"outboundTransform\": payload.outboundTransform\t}",
                 "tot": "jsonata"
             },
             {
@@ -2775,6 +2812,46 @@
         "x": 360,
         "y": 140,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0935c1067b16a8d",
+        "type": "transform",
+        "z": "69b3865e779a9ae0",
+        "name": "",
+        "template": "req.autana.action.inboundTransform",
+        "outputs": 1,
+        "x": 300,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d6a8354b237ee95",
+        "type": "switch",
+        "z": "69b3865e779a9ae0",
+        "name": "exist inboundTransform ?",
+        "property": "req.autana.action.inboundTransform",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "f0935c1067b16a8d"
+            ],
             []
         ]
     },

@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "autana-api-gateway": "~1.0.3"
+        "autana-api-gateway": "~1.0.3",
+        "node-red-contrib-transform": "^1.1.0"
     }
 }

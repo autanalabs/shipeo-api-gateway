@@ -344,6 +344,43 @@
         "color": "#DDAA99"
     },
     {
+        "id": "69b3865e779a9ae0",
+        "type": "subflow",
+        "name": "apply inboundTransform",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "7d6a8354b237ee95"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 660,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "f0935c1067b16a8d",
+                        "port": 0
+                    },
+                    {
+                        "id": "7d6a8354b237ee95",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "8b9887394539e844",
         "type": "appwrite-config",
         "endpoint": "https://cloud.appwrite.io/v1",
@@ -1362,7 +1399,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"{'docId': req.autana.params.petId}\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"{'docId': req.autana.pathParams.petId}\"}",
                 "tot": "json"
             }
         ],
@@ -1607,7 +1644,7 @@
                 "t": "set",
                 "p": "rule",
                 "pt": "msg",
-                "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation\t}",
+                "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation,\t   \"inboundTransform\": payload.inboundTransform,\t   \"outboundTransform\": payload.outboundTransform\t}",
                 "tot": "jsonata"
             },
             {
@@ -2779,6 +2816,46 @@
         ]
     },
     {
+        "id": "f0935c1067b16a8d",
+        "type": "transform",
+        "z": "69b3865e779a9ae0",
+        "name": "",
+        "template": "req.autana.action.inboundTransform",
+        "outputs": 1,
+        "x": 300,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d6a8354b237ee95",
+        "type": "switch",
+        "z": "69b3865e779a9ae0",
+        "name": "exist inboundTransform ?",
+        "property": "req.autana.action.inboundTransform",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "f0935c1067b16a8d"
+            ],
+            []
+        ]
+    },
+    {
         "id": "e4e9b44c02ccfdd1",
         "type": "inject",
         "z": "07021e24ebc3f637",
@@ -3070,8 +3147,8 @@
         "y": 1220,
         "wires": [
             [
-                "62c8b0931c5f2399",
-                "9270ce089d3fe629"
+                "9270ce089d3fe629",
+                "b7c6c00fee05cdc7"
             ]
         ]
     },
@@ -3198,8 +3275,8 @@
         "tableName": "",
         "name": "",
         "query": "",
-        "x": 550,
-        "y": 1220,
+        "x": 500,
+        "y": 1400,
         "wires": [
             [
                 "e0b79abcc31fec8c",
@@ -3250,8 +3327,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 1300,
+        "x": 520,
+        "y": 1480,
         "wires": []
     },
     {
@@ -3273,8 +3350,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 785,
-        "y": 1480,
+        "x": 775,
+        "y": 1820,
         "wires": []
     },
     {
@@ -3290,8 +3367,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 1420,
+        "x": 690,
+        "y": 1760,
         "wires": []
     },
     {
@@ -3307,8 +3384,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 1600,
+        "x": 670,
+        "y": 1940,
         "wires": []
     },
     {
@@ -3320,8 +3397,8 @@
         "tableName": "",
         "name": "",
         "docId": "",
-        "x": 580,
-        "y": 1540,
+        "x": 570,
+        "y": 1880,
         "wires": [
             [
                 "aba26514c1b5852c",
@@ -3351,8 +3428,8 @@
         "links": [
             "36ecb15fe948d7d6"
         ],
-        "x": 395,
-        "y": 1480,
+        "x": 385,
+        "y": 1820,
         "wires": [
             [
                 "72bffad7e78580b7",
@@ -3366,8 +3443,8 @@
         "z": "07021e24ebc3f637",
         "name": "DOCUMENT INSERT",
         "info": "",
-        "x": 140,
-        "y": 1400,
+        "x": 130,
+        "y": 1740,
         "wires": []
     },
     {
@@ -3393,7 +3470,7 @@
             "e8a5e38fb913b5d9"
         ],
         "x": 395,
-        "y": 1780,
+        "y": 2140,
         "wires": [
             [
                 "de8ffb4c9ed9e492",
@@ -3411,7 +3488,7 @@
             "6b66ab49ecbaa682"
         ],
         "x": 785,
-        "y": 1780,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3428,7 +3505,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 710,
-        "y": 1720,
+        "y": 2080,
         "wires": []
     },
     {
@@ -3445,7 +3522,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
-        "y": 1900,
+        "y": 2260,
         "wires": []
     },
     {
@@ -3455,7 +3532,7 @@
         "name": "DOCUMENT UPDATE",
         "info": "",
         "x": 140,
-        "y": 1700,
+        "y": 2060,
         "wires": []
     },
     {
@@ -3468,7 +3545,7 @@
         "name": "",
         "docId": "",
         "x": 590,
-        "y": 1840,
+        "y": 2200,
         "wires": [
             [
                 "79e5df297a0c5e62",
@@ -3486,7 +3563,7 @@
             "6b66ab49ecbaa682"
         ],
         "x": 775,
-        "y": 2100,
+        "y": 2420,
         "wires": []
     },
     {
@@ -3503,7 +3580,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
-        "y": 2040,
+        "y": 2360,
         "wires": []
     },
     {
@@ -3520,7 +3597,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 690,
-        "y": 2180,
+        "y": 2500,
         "wires": []
     },
     {
@@ -3530,7 +3607,7 @@
         "name": "DOCUMENT DELETE",
         "info": "",
         "x": 140,
-        "y": 2020,
+        "y": 2340,
         "wires": []
     },
     {
@@ -3543,7 +3620,7 @@
         "name": "",
         "docId": "",
         "x": 510,
-        "y": 2100,
+        "y": 2420,
         "wires": [
             [
                 "b89fbcde5a224ca9",
@@ -3573,7 +3650,7 @@
             "fb23eae4308d5996"
         ],
         "x": 395,
-        "y": 2100,
+        "y": 2420,
         "wires": [
             [
                 "6cbad8fb91b2d2c5",
@@ -3658,7 +3735,7 @@
         "name": "send response",
         "info": "",
         "x": 880,
-        "y": 2100,
+        "y": 2420,
         "wires": []
     },
     {
@@ -3668,7 +3745,7 @@
         "name": "send response",
         "info": "",
         "x": 900,
-        "y": 1780,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3677,8 +3754,8 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 900,
-        "y": 1480,
+        "x": 890,
+        "y": 1820,
         "wires": []
     },
     {
@@ -3707,8 +3784,8 @@
         "z": "07021e24ebc3f637",
         "name": "from document operation",
         "info": "",
-        "x": 250,
-        "y": 1480,
+        "x": 240,
+        "y": 1820,
         "wires": []
     },
     {
@@ -3718,7 +3795,7 @@
         "name": "from document operation",
         "info": "",
         "x": 250,
-        "y": 1780,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3728,7 +3805,7 @@
         "name": "from document operation",
         "info": "",
         "x": 250,
-        "y": 2100,
+        "y": 2420,
         "wires": []
     },
     {
@@ -3806,8 +3883,8 @@
         "type": "subflow:98574241950962f8",
         "z": "07021e24ebc3f637",
         "name": "",
-        "x": 580,
-        "y": 1480,
+        "x": 570,
+        "y": 1820,
         "wires": [
             [
                 "395da7a2da557286"
@@ -3820,12 +3897,43 @@
         "z": "07021e24ebc3f637",
         "name": "",
         "x": 580,
-        "y": 1780,
+        "y": 2140,
         "wires": [
             [
                 "534c41e7b48adca6"
             ]
         ]
+    },
+    {
+        "id": "b7c6c00fee05cdc7",
+        "type": "subflow:69b3865e779a9ae0",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "x": 550,
+        "y": 1320,
+        "wires": [
+            [
+                "62c8b0931c5f2399",
+                "6bf55752c012dbc4"
+            ]
+        ]
+    },
+    {
+        "id": "6bf55752c012dbc4",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 1320,
+        "wires": []
     },
     {
         "id": "1f5e86cf01c16650",
