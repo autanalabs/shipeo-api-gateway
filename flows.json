@@ -1417,7 +1417,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"{'docId': req.autana.pathParams.petId}\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"[\\\"equal('$id', '\\\" & req.autana.pathParams.petId & \\\"')\\\"]\"}",
                 "tot": "json"
             }
         ],

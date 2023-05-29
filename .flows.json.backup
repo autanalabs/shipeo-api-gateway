@@ -4090,7 +4090,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
+        "x": 920,
         "y": 1440,
         "wires": []
     },
