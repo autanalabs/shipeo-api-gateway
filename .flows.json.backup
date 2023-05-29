@@ -34,8 +34,8 @@
         ],
         "out": [
             {
-                "x": 280,
-                "y": 1140,
+                "x": 620,
+                "y": 1220,
                 "wires": [
                     {
                         "id": "3771017c6ff47a5f",
@@ -592,7 +592,7 @@
         "skipExists": true,
         "name": "",
         "x": 390,
-        "y": 900,
+        "y": 1040,
         "wires": [
             [
                 "3771017c6ff47a5f"
@@ -613,7 +613,7 @@
         "skipExists": true,
         "name": "",
         "x": 400,
-        "y": 980,
+        "y": 1120,
         "wires": [
             []
         ]
@@ -645,7 +645,7 @@
         "name": "command and path are unique",
         "info": "",
         "x": 730,
-        "y": 900,
+        "y": 1040,
         "wires": []
     },
     {
@@ -655,7 +655,7 @@
         "name": "projectId and actionId are unique",
         "info": "",
         "x": 730,
-        "y": 980,
+        "y": 1120,
         "wires": []
     },
     {
@@ -676,9 +676,83 @@
         "y": 800,
         "wires": [
             [
+                "a27b785035fb78f8"
+            ]
+        ]
+    },
+    {
+        "id": "a27b785035fb78f8",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "inboundTransform",
+        "size": "10000",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 390,
+        "y": 880,
+        "wires": [
+            [
+                "345e0e959212b292"
+            ]
+        ]
+    },
+    {
+        "id": "345e0e959212b292",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "outboundTransform",
+        "size": "10000",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 400,
+        "y": 960,
+        "wires": [
+            [
                 "2b76cb889312b797"
             ]
         ]
+    },
+    {
+        "id": "dedad9128ebdd32b",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "depends of actionType",
+        "info": "for DOCUMENT actionType is:\n - READ\n -  INSERT\n -  UPDATE\n -  DELETE",
+        "x": 640,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "66522053c47a44a7",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "JSONata inbound transform",
+        "info": "",
+        "x": 720,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "6343edfafd5cbb9d",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "JSONata outbound transform",
+        "info": "",
+        "x": 720,
+        "y": 960,
+        "wires": []
     },
     {
         "id": "705577d5392af509",
@@ -3225,8 +3299,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 1560,
+        "x": 680,
+        "y": 1600,
         "wires": []
     },
     {
@@ -3238,8 +3312,8 @@
         "tableName": "",
         "name": "",
         "docId": "",
-        "x": 510,
-        "y": 1480,
+        "x": 580,
+        "y": 1540,
         "wires": [
             [
                 "aba26514c1b5852c",
@@ -3273,8 +3347,8 @@
         "y": 1480,
         "wires": [
             [
-                "395da7a2da557286",
-                "72bffad7e78580b7"
+                "72bffad7e78580b7",
+                "73944b8ae31d08c7"
             ]
         ]
     },
@@ -3314,8 +3388,8 @@
         "y": 1780,
         "wires": [
             [
-                "534c41e7b48adca6",
-                "de8ffb4c9ed9e492"
+                "de8ffb4c9ed9e492",
+                "5f0326f2f1a18b20"
             ]
         ]
     },
@@ -3363,7 +3437,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
-        "y": 1860,
+        "y": 1900,
         "wires": []
     },
     {
@@ -3385,8 +3459,8 @@
         "tableName": "",
         "name": "",
         "docId": "",
-        "x": 510,
-        "y": 1780,
+        "x": 590,
+        "y": 1840,
         "wires": [
             [
                 "79e5df297a0c5e62",
@@ -3718,6 +3792,32 @@
         "x": 590,
         "y": 480,
         "wires": []
+    },
+    {
+        "id": "73944b8ae31d08c7",
+        "type": "subflow:98574241950962f8",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "x": 580,
+        "y": 1480,
+        "wires": [
+            [
+                "395da7a2da557286"
+            ]
+        ]
+    },
+    {
+        "id": "5f0326f2f1a18b20",
+        "type": "subflow:98574241950962f8",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "x": 580,
+        "y": 1780,
+        "wires": [
+            [
+                "534c41e7b48adca6"
+            ]
+        ]
     },
     {
         "id": "1f5e86cf01c16650",

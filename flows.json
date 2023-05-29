@@ -34,8 +34,8 @@
         ],
         "out": [
             {
-                "x": 280,
-                "y": 1140,
+                "x": 620,
+                "y": 1220,
                 "wires": [
                     {
                         "id": "3771017c6ff47a5f",
@@ -592,7 +592,7 @@
         "skipExists": true,
         "name": "",
         "x": 390,
-        "y": 900,
+        "y": 1040,
         "wires": [
             [
                 "3771017c6ff47a5f"
@@ -613,7 +613,7 @@
         "skipExists": true,
         "name": "",
         "x": 400,
-        "y": 980,
+        "y": 1120,
         "wires": [
             []
         ]
@@ -645,7 +645,7 @@
         "name": "command and path are unique",
         "info": "",
         "x": 730,
-        "y": 900,
+        "y": 1040,
         "wires": []
     },
     {
@@ -655,7 +655,7 @@
         "name": "projectId and actionId are unique",
         "info": "",
         "x": 730,
-        "y": 980,
+        "y": 1120,
         "wires": []
     },
     {
@@ -676,9 +676,83 @@
         "y": 800,
         "wires": [
             [
+                "a27b785035fb78f8"
+            ]
+        ]
+    },
+    {
+        "id": "a27b785035fb78f8",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "inboundTransform",
+        "size": "4096",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 390,
+        "y": 880,
+        "wires": [
+            [
+                "345e0e959212b292"
+            ]
+        ]
+    },
+    {
+        "id": "345e0e959212b292",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "outboundTransform",
+        "size": "4096",
+        "required": false,
+        "defaultValue": "",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 400,
+        "y": 960,
+        "wires": [
+            [
                 "2b76cb889312b797"
             ]
         ]
+    },
+    {
+        "id": "dedad9128ebdd32b",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "depends of actionType",
+        "info": "for DOCUMENT actionType is:\n - READ\n -  INSERT\n -  UPDATE\n -  DELETE",
+        "x": 640,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "66522053c47a44a7",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "JSONata inbound transform",
+        "info": "",
+        "x": 720,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "6343edfafd5cbb9d",
+        "type": "comment",
+        "z": "7e59738d989d54b6",
+        "name": "JSONata outbound transform",
+        "info": "",
+        "x": 720,
+        "y": 960,
+        "wires": []
     },
     {
         "id": "705577d5392af509",
