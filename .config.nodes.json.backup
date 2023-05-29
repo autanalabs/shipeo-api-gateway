@@ -457,7 +457,7 @@
     },
     "node-red-contrib-appwrite": {
         "name": "node-red-contrib-appwrite",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "local": false,
         "user": false,
         "nodes": {

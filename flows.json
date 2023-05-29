@@ -2,7 +2,7 @@
     {
         "id": "07021e24ebc3f637",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Api Gateway",
         "disabled": false,
         "info": "",
         "env": []
@@ -220,6 +220,87 @@
         "env": [],
         "meta": {},
         "color": "#DDAA99"
+    },
+    {
+        "id": "5846b8283270afd9",
+        "type": "subflow",
+        "name": "Load Rules",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "27e010777d86ff75"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 440,
+                "y": 640,
+                "wires": [
+                    {
+                        "id": "9e2b6dbc63696918",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "21bb71fafaf0d583",
+        "type": "subflow",
+        "name": "old API Gateway",
+        "info": "Before use API Gateway, first configure the rules sending a msg.payload with a JSON like this:\n\n{\n    \"GET\": {\n        \"/pets/\": {\n            \"actionId\": \"read all pets\"\n        },\n        \"/pets/:petId\": {\n            \"actionId\": \"read pet\"\n        }\n    },\n    \"POST\": {\n        \"/pets/\": {\n            \"actionId\": \"create pet\"\n        },\n        \"/pets/:petId\": {\n            \"actionId\": \"update pet\"\n        }\n    },\n    \"DELETE\": {\n        \"/pets/:petId\": {\n            \"actionId\": \"delete pet\"\n        }\n    }\n}\n\nThe output msg.req contains an autana object like this:\n\nmsg.req.autana:\n{\n    \"method\": \"POST\",\n    \"route\": \"/pets/:petId\",\n    \"url\": \"/pets/123\",\n    \"pathParams\": {\n        \"petId\": \"123\"\n    },\n    \"queryParams\": {},\n    \"action\": {\n        \"actionId\": \"update pet\"\n    }\n}\n\nThen You can take an action filtering by msg.req.autana.action.actionId\n\nYou can add more information to the action when configuring, if you wish.\n\nExample:\n\n{\n    \"GET\": {\n        \"/pets/\": {\n            \"actionId\": \"read all pets\",\n            \"anActionField\": \"foo\",\n            \"anotherActionField: \"bar\"\n        },\n        \"/pets/:petId\": {\n            \"actionId\": \"read pet\"\n        }\n    }\n}",
+        "category": "network",
+        "in": [
+            {
+                "x": 220,
+                "y": 1920,
+                "wires": [
+                    {
+                        "id": "0edd344a21511892"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 410,
+                "y": 1320,
+                "wires": [
+                    {
+                        "id": "ce80cd4f1eee9dc8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {
+            "module": "autana-api-gateway",
+            "type": "com.autanalabs.apiGateway",
+            "version": "1.0.0",
+            "author": "GiBi <gb@autanalabs.com>",
+            "desc": "Rest API Gateway based on JSON rules",
+            "keywords": "node-red, autana, rest, api, apigateway, http",
+            "license": "Apache-2.0"
+        },
+        "color": "#D7D7A0",
+        "inputLabels": [
+            "configuration rules"
+        ],
+        "outputLabels": [
+            "api-gateway http request"
+        ],
+        "icon": "font-awesome/fa-globe"
     },
     {
         "id": "8b9887394539e844",
@@ -1305,6 +1386,1299 @@
         "y": 460,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "27e010777d86ff75",
+        "type": "com.autana.readTable",
+        "z": "5846b8283270afd9",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "find rules",
+        "query": "",
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "cf2bfa976d1e9c80"
+            ]
+        ]
+    },
+    {
+        "id": "0a939ebed6480be4",
+        "type": "split",
+        "z": "5846b8283270afd9",
+        "name": "for each rule",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "4efe0989dfee1245"
+            ]
+        ]
+    },
+    {
+        "id": "5cb498df94edcd88",
+        "type": "join",
+        "z": "5846b8283270afd9",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "14b8ae24475672c8"
+            ]
+        ]
+    },
+    {
+        "id": "cf2bfa976d1e9c80",
+        "type": "change",
+        "z": "5846b8283270afd9",
+        "name": "get rules",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.documents",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "0a939ebed6480be4"
+            ]
+        ]
+    },
+    {
+        "id": "4efe0989dfee1245",
+        "type": "change",
+        "z": "5846b8283270afd9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "5cb498df94edcd88"
+            ]
+        ]
+    },
+    {
+        "id": "14b8ae24475672c8",
+        "type": "function",
+        "z": "5846b8283270afd9",
+        "name": "group by command",
+        "func": "const ruleList = msg.payload;\n\nconst groupByCategory = ruleList.reduce((group, rule) => {\n    const { command } = rule;\n    group[command] = group[command] ?? [];\n    group[command].push(rule);\n    return group;\n}, {});\n\nmsg.payload = groupByCategory;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "6a9afcb0120a0d0c"
+            ]
+        ]
+    },
+    {
+        "id": "6a9afcb0120a0d0c",
+        "type": "split",
+        "z": "5846b8283270afd9",
+        "name": "for each command",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "c70e0be681937ac2"
+            ]
+        ]
+    },
+    {
+        "id": "9e2b6dbc63696918",
+        "type": "join",
+        "z": "5846b8283270afd9",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 310,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c70e0be681937ac2",
+        "type": "function",
+        "z": "5846b8283270afd9",
+        "name": "group by path",
+        "func": "const ruleList = msg.payload;\n\nconst groupByPath = ruleList.reduce((group, rule) => {\n    const { path } = rule;\n    group[path] = group[path] ?? rule;\n    return group;\n}, {});\n\nmsg.payload = groupByPath;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 540,
+        "wires": [
+            [
+                "9e2b6dbc63696918"
+            ]
+        ]
+    },
+    {
+        "id": "58688987007c2b30",
+        "type": "http in",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "url": "/*",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "fee9c9a538a03ca7"
+            ]
+        ]
+    },
+    {
+        "id": "0aaaa80add2b291e",
+        "type": "http in",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "url": "/*",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "fee9c9a538a03ca7"
+            ]
+        ]
+    },
+    {
+        "id": "db0d5cfd3d1553a2",
+        "type": "http in",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "url": "/*",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 260,
+        "wires": [
+            [
+                "fee9c9a538a03ca7"
+            ]
+        ]
+    },
+    {
+        "id": "3cdcf1750d2bf7b1",
+        "type": "http in",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "url": "/*",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "fee9c9a538a03ca7"
+            ]
+        ]
+    },
+    {
+        "id": "7ad6e650c5729a6a",
+        "type": "http in",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "url": "/*",
+        "method": "patch",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "fee9c9a538a03ca7"
+            ]
+        ]
+    },
+    {
+        "id": "386528c9be0b195d",
+        "type": "catch",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 280,
+        "y": 1600,
+        "wires": [
+            [
+                "53e604e8718cb944",
+                "4f56772902327740"
+            ]
+        ]
+    },
+    {
+        "id": "53e604e8718cb944",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "status 500",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 1600,
+        "wires": [
+            [
+                "4423ac8b56223d0c"
+            ]
+        ]
+    },
+    {
+        "id": "4423ac8b56223d0c",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "6dc69ec0ea99ea75"
+        ],
+        "x": 575,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "6dc69ec0ea99ea75",
+        "type": "link in",
+        "z": "21bb71fafaf0d583",
+        "name": "link in 1",
+        "links": [
+            "4423ac8b56223d0c",
+            "3e0f0d4c8e5d1337",
+            "24b6d15d5fd02ae1"
+        ],
+        "x": 235,
+        "y": 1160,
+        "wires": [
+            [
+                "b3c88e760813461a"
+            ]
+        ]
+    },
+    {
+        "id": "fee9c9a538a03ca7",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "fb609bd38ea3833b"
+        ],
+        "x": 485,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "8c84bece8037e906",
+        "type": "link in",
+        "z": "21bb71fafaf0d583",
+        "name": "link in 2",
+        "links": [
+            "910355357ef7182b"
+        ],
+        "x": 235,
+        "y": 620,
+        "wires": [
+            [
+                "24c114deb6f66f56"
+            ]
+        ]
+    },
+    {
+        "id": "332a68e4d82c82a5",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "api-gateway response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "24c114deb6f66f56",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "200",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 620,
+        "wires": [
+            [
+                "3e0f0d4c8e5d1337"
+            ]
+        ]
+    },
+    {
+        "id": "3e0f0d4c8e5d1337",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "6dc69ec0ea99ea75"
+        ],
+        "x": 535,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "d2307a653a6c093a",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "Handle all Methods",
+        "info": "",
+        "x": 250,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ac339bef04971b3c",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "send response",
+        "info": "",
+        "x": 240,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "f100444db9c3e92e",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "Exception handling",
+        "info": "",
+        "x": 250,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "ecdb7de26680c173",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "OK",
+        "info": "",
+        "x": 210,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7c71fd36203bbb00",
+        "type": "function",
+        "z": "21bb71fafaf0d583",
+        "name": "getPathParams",
+        "func": "function getPathParams(path, pattern) {\n    // Crear una expresión regular para detectar los parámetros\n    const paramRegex = /\\/:([^\\/]+)/g;\n\n    // Extraer los nombres de los parámetros\n    const paramNames = [...pattern.matchAll(paramRegex)].map(match => match[1]);\n\n    // Verificar si hay nombres de parámetros duplicados\n    const hasDuplicates = paramNames.length !== new Set(paramNames).size;\n    if (hasDuplicates) {\n        throw new Error(\"Nombres de parametros repetidos en el patron\");\n    }\n\n    // Reemplazar los parámetros en el patrón por una expresión regular\n    const patternRegex = new RegExp('^' + pattern.replace(paramRegex, '/([^/]+)') + '$');\n\n    // Comprobar si el path coincide con el patrón\n    const match = path.match(patternRegex);\n    if (!match) {\n        throw new Error(\"Path y patron no coinciden en formato\");\n    }\n\n    // Crear el objeto de parámetros\n    const params = {};\n    paramNames.forEach((param, i) => {\n        params[param] = match[i + 1];\n    });\n\n    return params;\n}\n\nconst path = msg.req.url;\nconst matchedPathPattern = msg.pattern;\n\nmsg.req.parsedParams = getPathParams(path, matchedPathPattern);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 640,
+        "wires": [
+            [
+                "d7e905e47c8459db",
+                "c880c5f1112f1d48"
+            ]
+        ]
+    },
+    {
+        "id": "b14d8d40c688af2b",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "pre-process",
+        "info": "",
+        "x": 870,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "910355357ef7182b",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "8c84bece8037e906"
+        ],
+        "x": 1435,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "fb609bd38ea3833b",
+        "type": "link in",
+        "z": "21bb71fafaf0d583",
+        "name": "link in 3",
+        "links": [
+            "fee9c9a538a03ca7"
+        ],
+        "x": 855,
+        "y": 140,
+        "wires": [
+            [
+                "f238acca872c2e71",
+                "1dacd25a88bb6815"
+            ]
+        ]
+    },
+    {
+        "id": "f238acca872c2e71",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "api-gateway request",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4979c9081d75a341",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "pre-process",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "4f56772902327740",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "ERROR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "6ee6c11cc0518789",
+        "type": "function",
+        "z": "21bb71fafaf0d583",
+        "name": "isPathMatchingPattern",
+        "func": "function isPathMatchingPattern(path, pattern) {\n    // Crear una expresión regular para detectar los parámetros\n    const paramRegex = /\\/:([^\\/]+)/g;\n\n    // Reemplazar los parámetros en el patrón por una expresión regular\n    const patternRegex = new RegExp('^' + pattern.replace(paramRegex, '/([^/]+)') + '$');\n\n    // Comprobar si el path coincide con el patrón\n    const match = path.match(patternRegex);\n    return match != null;\n}\n\nconst path = msg.req.url;\nconst pattern = msg.pattern;\n\nmsg.paramsCanBeParsed = isPathMatchingPattern(path, pattern);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 520,
+        "wires": [
+            [
+                "f7b9836be8449c8c"
+            ]
+        ]
+    },
+    {
+        "id": "1dacd25a88bb6815",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "filter rules by method",
+        "rules": [
+            {
+                "t": "set",
+                "p": "rules",
+                "pt": "msg",
+                "to": "http_rules",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "method",
+                "pt": "msg",
+                "to": "req.method",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$lookup(rules, method)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 220,
+        "wires": [
+            [
+                "1b856a5e9c292190",
+                "d4b04fb22d3f0d8b"
+            ]
+        ]
+    },
+    {
+        "id": "1b856a5e9c292190",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "req",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2cbeda31acd0ee4f",
+        "type": "split",
+        "z": "21bb71fafaf0d583",
+        "name": "foreach rule",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "pattern",
+        "x": 950,
+        "y": 420,
+        "wires": [
+            [
+                "eae271d73aa6dd76",
+                "6ee6c11cc0518789"
+            ]
+        ]
+    },
+    {
+        "id": "eae271d73aa6dd76",
+        "type": "debug",
+        "z": "21bb71fafaf0d583",
+        "name": "rule",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "97ec91da3cb74822",
+        "type": "join",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 960,
+        "y": 960,
+        "wires": [
+            [
+                "abea27fd4910f654"
+            ]
+        ]
+    },
+    {
+        "id": "f7b9836be8449c8c",
+        "type": "switch",
+        "z": "21bb71fafaf0d583",
+        "name": "paramsCanBeParsed?",
+        "property": "paramsCanBeParsed",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1100,
+        "y": 580,
+        "wires": [
+            [
+                "7c71fd36203bbb00"
+            ],
+            [
+                "66639612e9db0bba"
+            ]
+        ]
+    },
+    {
+        "id": "55811cfa2f38e68d",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "404",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 840,
+        "wires": [
+            [
+                "24b6d15d5fd02ae1"
+            ]
+        ]
+    },
+    {
+        "id": "24b6d15d5fd02ae1",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "6dc69ec0ea99ea75"
+        ],
+        "x": 535,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7740a5f6800986e6",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "Not Found",
+        "info": "",
+        "x": 220,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "61125ddf884368b4",
+        "type": "link in",
+        "z": "21bb71fafaf0d583",
+        "name": "link in 4",
+        "links": [
+            "44187f8078307871",
+            "378914556a94d67c"
+        ],
+        "x": 205,
+        "y": 840,
+        "wires": [
+            [
+                "55811cfa2f38e68d"
+            ]
+        ]
+    },
+    {
+        "id": "44187f8078307871",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 6",
+        "mode": "link",
+        "links": [
+            "61125ddf884368b4"
+        ],
+        "x": 1365,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d7e905e47c8459db",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 7",
+        "mode": "link",
+        "links": [
+            "c6b8d8a36dc05b63"
+        ],
+        "x": 1235,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c6b8d8a36dc05b63",
+        "type": "link in",
+        "z": "21bb71fafaf0d583",
+        "name": "link in 5",
+        "links": [
+            "d7e905e47c8459db",
+            "66639612e9db0bba"
+        ],
+        "x": 855,
+        "y": 960,
+        "wires": [
+            [
+                "97ec91da3cb74822"
+            ]
+        ]
+    },
+    {
+        "id": "3e4927d1388fe4d2",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "404",
+        "info": "",
+        "x": 1450,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "66639612e9db0bba",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 8",
+        "mode": "link",
+        "links": [
+            "c6b8d8a36dc05b63"
+        ],
+        "x": 1295,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c880c5f1112f1d48",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "req.action",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 700,
+        "wires": [
+            [
+                "4979c9081d75a341"
+            ]
+        ]
+    },
+    {
+        "id": "abea27fd4910f654",
+        "type": "switch",
+        "z": "21bb71fafaf0d583",
+        "name": "action not null ?",
+        "property": "req.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1000,
+        "y": 1040,
+        "wires": [
+            [
+                "a99658442ce47e83"
+            ],
+            [
+                "378914556a94d67c"
+            ]
+        ]
+    },
+    {
+        "id": "378914556a94d67c",
+        "type": "link out",
+        "z": "21bb71fafaf0d583",
+        "name": "link out 9",
+        "mode": "link",
+        "links": [
+            "61125ddf884368b4"
+        ],
+        "x": 1175,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "b9b2167b9c35be1a",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "404",
+        "info": "",
+        "x": 1270,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "d42c184708759c49",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "200",
+        "info": "",
+        "x": 1530,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "d4b04fb22d3f0d8b",
+        "type": "switch",
+        "z": "21bb71fafaf0d583",
+        "name": "there are rules by method ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1000,
+        "y": 320,
+        "wires": [
+            [
+                "2cbeda31acd0ee4f"
+            ],
+            [
+                "44187f8078307871"
+            ]
+        ]
+    },
+    {
+        "id": "455b5fb7177e168a",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "post-process",
+        "info": "",
+        "x": 870,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "a99658442ce47e83",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "add X-Action_Id header",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{ \"X-Action_Id\": req.action.actionId }",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 960,
+        "wires": [
+            [
+                "910355357ef7182b"
+            ]
+        ]
+    },
+    {
+        "id": "b3c88e760813461a",
+        "type": "function",
+        "z": "21bb71fafaf0d583",
+        "name": "add X-SuperPowered-By",
+        "func": "var msg = msg;\nif (msg.headers == null) {\n    msg.headers = {\n        \"X-SuperPowered-By\": \"Autana API Gateway\"\n    };\n} else {\n    msg.headers[\"X-SuperPowered-By\"] = \"Autana API Gateway\"\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1160,
+        "wires": [
+            [
+                "ce80cd4f1eee9dc8"
+            ]
+        ]
+    },
+    {
+        "id": "ce80cd4f1eee9dc8",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "cleanUp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "req.autana",
+                "pt": "msg",
+                "to": "{\t    \"method\": method,\t    \"route\": pattern,\t    \"url\": req.url,\t    \"pathParams\": req.parsedParams,\t    \"queryParams\": req.query,\t    \"action\": req.action\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "delete",
+                "p": "rules",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "pattern",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "paramsCanBeParsed",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "req.parsedParams",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "req.action",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1240,
+        "wires": [
+            [
+                "332a68e4d82c82a5"
+            ]
+        ]
+    },
+    {
+        "id": "c656019334ca5acb",
+        "type": "comment",
+        "z": "21bb71fafaf0d583",
+        "name": "Input Configuration",
+        "info": "",
+        "x": 250,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "0edd344a21511892",
+        "type": "change",
+        "z": "21bb71fafaf0d583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "http_rules",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4e9b44c02ccfdd1",
+        "type": "inject",
+        "z": "07021e24ebc3f637",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "3b7c8c5f9387b3c7"
+            ]
+        ]
+    },
+    {
+        "id": "d144241d3986169c",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "rules",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3b7c8c5f9387b3c7",
+        "type": "subflow:5846b8283270afd9",
+        "z": "07021e24ebc3f637",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "d144241d3986169c",
+                "9e3e93a5d21d8ebb"
+            ]
+        ]
+    },
+    {
+        "id": "b2f601ad1ad58a48",
+        "type": "http response",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 430,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "dcae466a56fd8449",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "request",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5657b4ad67ace405",
+        "type": "function",
+        "z": "07021e24ebc3f637",
+        "name": "function 1",
+        "func": "var msg = msg;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "dcae466a56fd8449",
+                "b2f601ad1ad58a48"
+            ]
+        ]
+    },
+    {
+        "id": "9e3e93a5d21d8ebb",
+        "type": "subflow:21bb71fafaf0d583",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "5657b4ad67ace405"
+            ]
         ]
     },
     {
