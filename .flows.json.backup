@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "58697012b7039513",
+        "type": "tab",
+        "label": "Delete all rules",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "7e59738d989d54b6",
         "type": "subflow",
         "name": "Create Table Rules",
@@ -688,7 +696,7 @@
         "databaseName": "main",
         "tableName": "",
         "key": "inboundTransform",
-        "size": "10000",
+        "size": "4096",
         "required": false,
         "defaultValue": "",
         "isArray": false,
@@ -710,7 +718,7 @@
         "databaseName": "main",
         "tableName": "",
         "key": "outboundTransform",
-        "size": "10000",
+        "size": "4096",
         "required": false,
         "defaultValue": "",
         "isArray": false,
@@ -3997,6 +4005,183 @@
         "statusType": "auto",
         "x": 540,
         "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3d2ea5b9d655397a",
+        "type": "inject",
+        "z": "58697012b7039513",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "112fc57db460c397"
+            ]
+        ]
+    },
+    {
+        "id": "112fc57db460c397",
+        "type": "com.autana.readTable",
+        "z": "58697012b7039513",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "find rall rules",
+        "query": "",
+        "x": 270,
+        "y": 140,
+        "wires": [
+            [
+                "70a1841bbfec3c2d"
+            ]
+        ]
+    },
+    {
+        "id": "70a1841bbfec3c2d",
+        "type": "change",
+        "z": "58697012b7039513",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.documents",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "94c7848d28a66a5d"
+            ]
+        ]
+    },
+    {
+        "id": "94c7848d28a66a5d",
+        "type": "split",
+        "z": "58697012b7039513",
+        "name": "foreach rule",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "0842aad5d20ba602"
+            ]
+        ]
+    },
+    {
+        "id": "ba54d0f04f964593",
+        "type": "com.autana.deleteRow",
+        "z": "58697012b7039513",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "",
+        "docId": "",
+        "x": 350,
+        "y": 460,
+        "wires": [
+            [
+                "4dd5273722855c86"
+            ]
+        ]
+    },
+    {
+        "id": "0842aad5d20ba602",
+        "type": "change",
+        "z": "58697012b7039513",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "docId",
+                "pt": "msg",
+                "to": "payload.$id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "ba54d0f04f964593"
+            ]
+        ]
+    },
+    {
+        "id": "4dd5273722855c86",
+        "type": "join",
+        "z": "58697012b7039513",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "f4687b26f6e175c8"
+            ]
+        ]
+    },
+    {
+        "id": "f4687b26f6e175c8",
+        "type": "debug",
+        "z": "58697012b7039513",
+        "name": "Clear Rules",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 540,
         "wires": []
     }
 ]
