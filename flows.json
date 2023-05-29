@@ -240,8 +240,8 @@
         ],
         "out": [
             {
-                "x": 440,
-                "y": 640,
+                "x": 480,
+                "y": 800,
                 "wires": [
                     {
                         "id": "9e2b6dbc63696918",
@@ -1440,8 +1440,8 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 210,
-        "y": 360,
+        "x": 250,
+        "y": 520,
         "wires": [
             [
                 "14b8ae24475672c8"
@@ -1483,9 +1483,23 @@
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "rule",
                 "pt": "msg",
                 "to": "{\t   \"command\": payload.command,\t   \"path\": payload.path,\t   \"projectId\": payload.projectId,\t   \"actionId\": payload.actionId,\t   \"actionType\": payload.actionType,\t   \"databaseId\": payload.databaseId,\t   \"collectionId\": payload.collectionId,\t   \"operation\": payload.operation\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "'equal(\"projectId\",\"' & rule.projectId & '\")'",
                 "tot": "jsonata"
             }
         ],
@@ -1498,7 +1512,7 @@
         "y": 280,
         "wires": [
             [
-                "5cb498df94edcd88"
+                "f96bb59d3c811ea4"
             ]
         ]
     },
@@ -1513,8 +1527,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
-        "y": 420,
+        "x": 290,
+        "y": 580,
         "wires": [
             [
                 "6a9afcb0120a0d0c"
@@ -1532,8 +1546,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 350,
-        "y": 480,
+        "x": 390,
+        "y": 640,
         "wires": [
             [
                 "c70e0be681937ac2"
@@ -1556,8 +1570,8 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 310,
-        "y": 640,
+        "x": 350,
+        "y": 800,
         "wires": [
             []
         ]
@@ -1573,11 +1587,67 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 540,
+        "x": 440,
+        "y": 700,
         "wires": [
             [
                 "9e2b6dbc63696918"
+            ]
+        ]
+    },
+    {
+        "id": "f96bb59d3c811ea4",
+        "type": "com.autana.readTable",
+        "z": "5846b8283270afd9",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "projects",
+        "name": "find project by id",
+        "query": "",
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "d01cf9a9c6651140"
+            ]
+        ]
+    },
+    {
+        "id": "d01cf9a9c6651140",
+        "type": "change",
+        "z": "5846b8283270afd9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "rule.project",
+                "pt": "msg",
+                "to": "payload.documents[0]",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "rule",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "rule",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "5cb498df94edcd88"
             ]
         ]
     },
