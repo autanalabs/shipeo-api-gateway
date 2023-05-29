@@ -3032,14 +3032,14 @@
             },
             {
                 "t": "set",
-                "p": "databaseId",
+                "p": "databaseName",
                 "pt": "msg",
                 "to": "req.autana.action.databaseId",
                 "tot": "msg"
             },
             {
                 "t": "set",
-                "p": "collectionId",
+                "p": "tableName",
                 "pt": "msg",
                 "to": "req.autana.action.collectionId",
                 "tot": "msg"
