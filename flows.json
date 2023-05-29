@@ -24,6 +24,14 @@
         "env": []
     },
     {
+        "id": "7f9ab4cfc0b6eef8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "7e59738d989d54b6",
         "type": "subflow",
         "name": "Create Table Rules",
@@ -346,13 +354,13 @@
     {
         "id": "69b3865e779a9ae0",
         "type": "subflow",
-        "name": "apply inboundTransform",
+        "name": "inboundTransform",
         "info": "",
         "category": "",
         "in": [
             {
                 "x": 140,
-                "y": 140,
+                "y": 120,
                 "wires": [
                     {
                         "id": "7d6a8354b237ee95"
@@ -362,13 +370,19 @@
         ],
         "out": [
             {
+                "x": 630,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "ba4f6e3aed2f1ef5",
+                        "port": 0
+                    }
+                ]
+            },
+            {
                 "x": 660,
                 "y": 180,
                 "wires": [
-                    {
-                        "id": "f0935c1067b16a8d",
-                        "port": 0
-                    },
                     {
                         "id": "7d6a8354b237ee95",
                         "port": 1
@@ -378,7 +392,11 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "outputLabels": [
+            "transformed",
+            "no-transformed"
+        ]
     },
     {
         "id": "8b9887394539e844",
@@ -2816,19 +2834,6 @@
         ]
     },
     {
-        "id": "f0935c1067b16a8d",
-        "type": "transform",
-        "z": "69b3865e779a9ae0",
-        "name": "",
-        "template": "req.autana.action.inboundTransform",
-        "outputs": 1,
-        "x": 300,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "7d6a8354b237ee95",
         "type": "switch",
         "z": "69b3865e779a9ae0",
@@ -2850,8 +2855,24 @@
         "y": 180,
         "wires": [
             [
-                "f0935c1067b16a8d"
+                "ba4f6e3aed2f1ef5"
             ],
+            []
+        ]
+    },
+    {
+        "id": "ba4f6e3aed2f1ef5",
+        "type": "transform",
+        "z": "69b3865e779a9ae0",
+        "name": "",
+        "template": "req.autana.action.inboundTransform",
+        "templateType": "msg",
+        "target": "inboundTransformResult",
+        "targetType": "msg",
+        "outputs": 1,
+        "x": 320,
+        "y": 300,
+        "wires": [
             []
         ]
     },
@@ -3275,8 +3296,8 @@
         "tableName": "",
         "name": "",
         "query": "",
-        "x": 500,
-        "y": 1400,
+        "x": 620,
+        "y": 1580,
         "wires": [
             [
                 "e0b79abcc31fec8c",
@@ -3293,8 +3314,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 725,
-        "y": 1220,
+        "x": 855,
+        "y": 1600,
         "wires": []
     },
     {
@@ -3310,7 +3331,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
+        "x": 520,
         "y": 1160,
         "wires": []
     },
@@ -3327,8 +3348,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 1480,
+        "x": 920,
+        "y": 1500,
         "wires": []
     },
     {
@@ -3764,8 +3785,8 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 830,
-        "y": 1220,
+        "x": 960,
+        "y": 1600,
         "wires": []
     },
     {
@@ -3905,20 +3926,6 @@
         ]
     },
     {
-        "id": "b7c6c00fee05cdc7",
-        "type": "subflow:69b3865e779a9ae0",
-        "z": "07021e24ebc3f637",
-        "name": "",
-        "x": 550,
-        "y": 1320,
-        "wires": [
-            [
-                "62c8b0931c5f2399",
-                "6bf55752c012dbc4"
-            ]
-        ]
-    },
-    {
         "id": "6bf55752c012dbc4",
         "type": "debug",
         "z": "07021e24ebc3f637",
@@ -3932,7 +3939,159 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 840,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "b7c6c00fee05cdc7",
+        "type": "subflow:69b3865e779a9ae0",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "x": 530,
+        "y": 1280,
+        "wires": [
+            [
+                "6bf55752c012dbc4",
+                "9209db6a39aa55fa"
+            ],
+            [
+                "9e6b2522859fda99",
+                "6e28fda80698ab37"
+            ]
+        ]
+    },
+    {
+        "id": "9e6b2522859fda99",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "NO TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "f9d5b3c725c83feb",
+        "type": "change",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "inboundTransformResult",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1440,
+        "wires": [
+            [
+                "a3bf4d4d6c3d75f6",
+                "05d9c60ce4087825"
+            ]
+        ]
+    },
+    {
+        "id": "a3bf4d4d6c3d75f6",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 24",
+        "mode": "link",
+        "links": [
+            "80f301edd669555f"
+        ],
+        "x": 705,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "80f301edd669555f",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 14",
+        "links": [
+            "a3bf4d4d6c3d75f6",
+            "6e28fda80698ab37"
+        ],
+        "x": 475,
+        "y": 1580,
+        "wires": [
+            [
+                "62c8b0931c5f2399"
+            ]
+        ]
+    },
+    {
+        "id": "6e28fda80698ab37",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 25",
+        "mode": "link",
+        "links": [
+            "80f301edd669555f"
+        ],
+        "x": 755,
         "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "9209db6a39aa55fa",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 26",
+        "mode": "link",
+        "links": [
+            "844ecf43977abaa3"
+        ],
+        "x": 755,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "844ecf43977abaa3",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 15",
+        "links": [
+            "9209db6a39aa55fa"
+        ],
+        "x": 465,
+        "y": 1440,
+        "wires": [
+            [
+                "f9d5b3c725c83feb"
+            ]
+        ]
+    },
+    {
+        "id": "05d9c60ce4087825",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE READ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1440,
         "wires": []
     },
     {
@@ -4290,6 +4449,179 @@
         "statusType": "auto",
         "x": 590,
         "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a0677325995bc8c5",
+        "type": "switch",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "exist inboundTransform ?",
+        "property": "req.autana.action.inboundTransform",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "7f37bf8ddab0b85b",
+                "edfe7ee8ebf193df"
+            ],
+            [
+                "c34664d588e27d29"
+            ]
+        ]
+    },
+    {
+        "id": "443c6893dcdf44eb",
+        "type": "inject",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "",
+        "props": [
+            {
+                "p": "req",
+                "v": "{\"_readableState\":{\"objectMode\":false,\"highWaterMark\":16384,\"buffer\":{\"head\":null,\"tail\":null,\"length\":0},\"length\":0,\"pipes\":[],\"flowing\":null,\"ended\":true,\"endEmitted\":false,\"reading\":false,\"constructed\":true,\"sync\":true,\"needReadable\":false,\"emittedReadable\":false,\"readableListening\":false,\"resumeScheduled\":false,\"errorEmitted\":false,\"emitClose\":true,\"autoDestroy\":true,\"destroyed\":false,\"errored\":null,\"closed\":false,\"closeEmitted\":false,\"defaultEncoding\":\"utf8\",\"awaitDrainWriters\":null,\"multiAwaitDrain\":false,\"readingMore\":true,\"dataEmitted\":false,\"decoder\":null,\"encoding\":null},\"_events\":{},\"_eventsCount\":1,\"socket\":\"[internal]\",\"httpVersionMajor\":1,\"httpVersionMinor\":1,\"httpVersion\":\"1.1\",\"complete\":true,\"rawHeaders\":[\"Host\",\"localhost:1978\",\"User-Agent\",\"curl/7.79.1\",\"Accept\",\"*/*\"],\"rawTrailers\":[],\"aborted\":false,\"upgrade\":false,\"url\":\"/pets/1234\",\"method\":\"GET\",\"statusCode\":null,\"statusMessage\":null,\"client\":\"[internal]\",\"_consuming\":false,\"_dumped\":false,\"baseUrl\":\"/api\",\"originalUrl\":\"/api/pets/1234\",\"_parsedUrl\":{\"protocol\":null,\"slashes\":null,\"auth\":null,\"host\":null,\"port\":null,\"hostname\":null,\"hash\":null,\"search\":null,\"query\":null,\"pathname\":\"/pets/1234\",\"path\":\"/pets/1234\",\"href\":\"/pets/1234\",\"_raw\":\"/pets/1234\"},\"params\":{\"0\":\"pets/1234\"},\"query\":{},\"res\":\"[internal]\",\"route\":{\"path\":\"/*\",\"stack\":[{\"name\":\"cookieParser\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"},{\"name\":\"httpMiddleware\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"},{\"name\":\"corsHandler\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"},{\"name\":\"metricsHandler\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"},{\"name\":\"<anonymous>\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"},{\"name\":\"<anonymous>\",\"keys\":[],\"regexp\":{\"__enc__\":true,\"type\":\"regexp\",\"data\":\"/^\\\\/?$/i\"},\"method\":\"get\"}],\"methods\":{\"get\":true}},\"cookies\":{},\"signedCookies\":{},\"autana\":{\"method\":\"GET\",\"route\":\"/pets/:petId\",\"url\":\"/pets/1234\",\"pathParams\":{\"petId\":\"1234\"},\"queryParams\":{},\"action\":{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"[\\\"equal('$id', '\\\" & req.autana.pathParams.petId & \\\"')\\\"]\",\"outboundTransform\":null,\"project\":{\"endpoint\":\"https://cloud.appwrite.io/v1\",\"projectId\":\"pets\",\"apiKey\":\"92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51\",\"$id\":\"pets\",\"$createdAt\":\"2023-05-28T14:51:11.344+00:00\",\"$updatedAt\":\"2023-05-28T14:51:11.344+00:00\",\"$permissions\":[],\"$collectionId\":\"projects\",\"$databaseId\":\"main\"}}}}",
+                "vt": "json"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "a0677325995bc8c5"
+            ]
+        ]
+    },
+    {
+        "id": "7f37bf8ddab0b85b",
+        "type": "debug",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "exist",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c34664d588e27d29",
+        "type": "debug",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "no exist",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "00c222c7a28d63c4",
+        "type": "debug",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "after",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6c612fd8241227a4",
+        "type": "transform",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "",
+        "template": "req.autana.action.inboundTransform",
+        "templateType": "msg",
+        "target": "query",
+        "targetType": "msg",
+        "outputs": 1,
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "54fe24b3ee3dac6e"
+            ]
+        ]
+    },
+    {
+        "id": "edfe7ee8ebf193df",
+        "type": "change",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "query2",
+                "pt": "msg",
+                "to": "[\"equal('$id', '\" & req.autana.pathParams.petId & \"')\"]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "00c222c7a28d63c4",
+                "6c612fd8241227a4"
+            ]
+        ]
+    },
+    {
+        "id": "54fe24b3ee3dac6e",
+        "type": "debug",
+        "z": "7f9ab4cfc0b6eef8",
+        "name": "after(2)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 340,
         "wires": []
     }
 ]
