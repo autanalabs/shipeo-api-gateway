@@ -647,5 +647,24 @@
                 "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-node-mysql/68-mysql.js"
             }
         }
+    },
+    "autana-api-gateway": {
+        "name": "autana-api-gateway",
+        "version": "1.0.3",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "apiGateway": {
+                "name": "apiGateway",
+                "types": [
+                    "com.autanalabs.apiGateway"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "autana-api-gateway",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-api-gateway/subflow.js"
+            }
+        }
     }
 }

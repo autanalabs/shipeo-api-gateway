@@ -16,14 +16,6 @@
         "env": []
     },
     {
-        "id": "109b7a08f339674a",
-        "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "7e59738d989d54b6",
         "type": "subflow",
         "name": "Create Table Rules",
@@ -43,7 +35,7 @@
         "out": [
             {
                 "x": 280,
-                "y": 980,
+                "y": 1140,
                 "wires": [
                     {
                         "id": "3771017c6ff47a5f",
@@ -141,11 +133,85 @@
         ],
         "out": [
             {
-                "x": 340,
-                "y": 520,
+                "x": 740,
+                "y": 400,
                 "wires": [
                     {
                         "id": "2a4ec9dded10b9d4",
+                        "port": 0
+                    },
+                    {
+                        "id": "7b182218fd39e611",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "8e844c7077bbffbc",
+        "type": "subflow",
+        "name": "Create rule",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "095d62752d790492"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 660,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "95bdadead4830db0",
+                        "port": 0
+                    },
+                    {
+                        "id": "f2b4861b8dc9f002",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "c456eb608cd0ccef",
+        "type": "subflow",
+        "name": "Create Pets Rules",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "84fc8b6b614a2c10"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 700,
+                "y": 520,
+                "wires": [
+                    {
+                        "id": "c94ce775d0d07506",
                         "port": 0
                     }
                 ]
@@ -387,7 +453,7 @@
         "y": 720,
         "wires": [
             [
-                "2b76cb889312b797"
+                "3b8441fe70867b9b"
             ]
         ]
     },
@@ -405,7 +471,7 @@
         "skipExists": true,
         "name": "",
         "x": 390,
-        "y": 800,
+        "y": 900,
         "wires": [
             [
                 "3771017c6ff47a5f"
@@ -426,7 +492,7 @@
         "skipExists": true,
         "name": "",
         "x": 400,
-        "y": 880,
+        "y": 980,
         "wires": [
             []
         ]
@@ -458,7 +524,7 @@
         "name": "command and path are unique",
         "info": "",
         "x": 730,
-        "y": 800,
+        "y": 900,
         "wires": []
     },
     {
@@ -468,8 +534,30 @@
         "name": "projectId and actionId are unique",
         "info": "",
         "x": 730,
-        "y": 880,
+        "y": 980,
         "wires": []
+    },
+    {
+        "id": "3b8441fe70867b9b",
+        "type": "com.autana.StringColumn",
+        "z": "7e59738d989d54b6",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "",
+        "key": "operation",
+        "size": "20",
+        "required": false,
+        "defaultValue": "READ",
+        "isArray": false,
+        "skipExists": true,
+        "name": "",
+        "x": 370,
+        "y": 800,
+        "wires": [
+            [
+                "2b76cb889312b797"
+            ]
+        ]
     },
     {
         "id": "705577d5392af509",
@@ -840,7 +928,7 @@
         "y": 240,
         "wires": [
             [
-                "b226709f78033188"
+                "7b182218fd39e611"
             ],
             [
                 "64ba940fbc89363c"
@@ -848,32 +936,387 @@
         ]
     },
     {
-        "id": "b226709f78033188",
-        "type": "debug",
+        "id": "7b182218fd39e611",
+        "type": "change",
         "z": "1e9e2287cf2edeca",
-        "name": "project pets already exists",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 220,
-        "wires": []
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.documents[0]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95bdadead4830db0",
+        "type": "com.autana.insertRow",
+        "z": "8e844c7077bbffbc",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "",
+        "docId": "",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f801fdf780be4978",
+        "type": "change",
+        "z": "8e844c7077bbffbc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "_config",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "95bdadead4830db0"
+            ]
+        ]
+    },
+    {
+        "id": "4563ec0fbfe26533",
+        "type": "com.autana.readTable",
+        "z": "8e844c7077bbffbc",
+        "appwriteConfig": "8b9887394539e844",
+        "databaseName": "main",
+        "tableName": "rules",
+        "name": "find rule by command and path",
+        "query": "",
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "671d6515fbb68154"
+            ]
+        ]
+    },
+    {
+        "id": "671d6515fbb68154",
+        "type": "switch",
+        "z": "8e844c7077bbffbc",
+        "name": "rule exists ?",
+        "property": "payload.total",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "f2b4861b8dc9f002"
+            ],
+            [
+                "f801fdf780be4978"
+            ]
+        ]
+    },
+    {
+        "id": "095d62752d790492",
+        "type": "change",
+        "z": "8e844c7077bbffbc",
+        "name": "set params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "_config",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "[\t    'equal(\"command\",\"' & _config.command & '\")',\t    'equal(\"path\",\"' & _config.path & '\")'\t]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "4563ec0fbfe26533"
+            ]
+        ]
+    },
+    {
+        "id": "f2b4861b8dc9f002",
+        "type": "change",
+        "z": "8e844c7077bbffbc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.documents[0]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa27ac36db7d0ee8",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create read_all_pets",
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "ee0be307f2614b2b"
+            ]
+        ]
+    },
+    {
+        "id": "84fc8b6b614a2c10",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure read_all_pets",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"GET\",\"path\":\"/pets/\",\"projectId\":\"pets\",\"actionId\":\"read_all_pets\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 80,
+        "wires": [
+            [
+                "fa27ac36db7d0ee8"
+            ]
+        ]
+    },
+    {
+        "id": "ee0be307f2614b2b",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure read_pet_by_id",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"GET\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "217ccd725d3a1aea"
+            ]
+        ]
+    },
+    {
+        "id": "217ccd725d3a1aea",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create read_pet_by_id",
+        "x": 540,
+        "y": 180,
+        "wires": [
+            [
+                "7f4e6393c53f7794"
+            ]
+        ]
+    },
+    {
+        "id": "7f4e6393c53f7794",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure create_pet",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"POST\",\"path\":\"/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "b84e2adf217fe37d"
+            ]
+        ]
+    },
+    {
+        "id": "b84e2adf217fe37d",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create create_pet",
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "fd71ce3a215d5d8f"
+            ]
+        ]
+    },
+    {
+        "id": "fd71ce3a215d5d8f",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure update_pet",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"POST\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"update_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"UPDATE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 380,
+        "wires": [
+            [
+                "0f236762e3dea817"
+            ]
+        ]
+    },
+    {
+        "id": "0f236762e3dea817",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create update_pet",
+        "x": 530,
+        "y": 380,
+        "wires": [
+            [
+                "b06c8e6593f612bf"
+            ]
+        ]
+    },
+    {
+        "id": "b06c8e6593f612bf",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure delete_pet",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "c94ce775d0d07506"
+            ]
+        ]
+    },
+    {
+        "id": "c94ce775d0d07506",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create delete_pet",
+        "x": 530,
+        "y": 460,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "1f5e86cf01c16650",
         "type": "subflow:7e59738d989d54b6",
         "z": "c137f9ae9b5be96b",
-        "x": 310,
-        "y": 180,
+        "x": 230,
+        "y": 260,
         "wires": [
             [
                 "33b0b6bc16372a91",
-                "5e65ef3eb994afb3"
+                "f224c9d750605261"
             ]
         ]
     },
@@ -881,7 +1324,7 @@
         "id": "fc35ee2aa580bf1f",
         "type": "inject",
         "z": "c137f9ae9b5be96b",
-        "name": "",
+        "name": "start",
         "props": [
             {
                 "p": "payload"
@@ -898,11 +1341,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 160,
-        "y": 100,
+        "x": 150,
+        "y": 60,
         "wires": [
             [
-                "1f5e86cf01c16650"
+                "5e65ef3eb994afb3"
             ]
         ]
     },
@@ -919,20 +1362,20 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 180,
+        "x": 530,
+        "y": 260,
         "wires": []
     },
     {
         "id": "5e65ef3eb994afb3",
         "type": "subflow:1314f78d13357201",
         "z": "c137f9ae9b5be96b",
-        "x": 320,
-        "y": 280,
+        "x": 240,
+        "y": 160,
         "wires": [
             [
                 "42c79aa332b04941",
-                "49b9108d6c75c15b"
+                "1f5e86cf01c16650"
             ]
         ]
     },
@@ -949,8 +1392,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 280,
+        "x": 540,
+        "y": 160,
         "wires": []
     },
     {
@@ -958,12 +1401,11 @@
         "type": "subflow:082636f279771408",
         "z": "c137f9ae9b5be96b",
         "name": "",
-        "x": 320,
-        "y": 380,
+        "x": 240,
+        "y": 560,
         "wires": [
             [
-                "1033d595fa79c970",
-                "f224c9d750605261"
+                "1033d595fa79c970"
             ]
         ]
     },
@@ -980,8 +1422,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 380,
+        "x": 540,
+        "y": 560,
         "wires": []
     },
     {
@@ -989,11 +1431,12 @@
         "type": "subflow:1e9e2287cf2edeca",
         "z": "c137f9ae9b5be96b",
         "name": "",
-        "x": 320,
-        "y": 480,
+        "x": 250,
+        "y": 360,
         "wires": [
             [
-                "21384e6b0e98a3ba"
+                "21384e6b0e98a3ba",
+                "a75a00b6b6e053e7"
             ]
         ]
     },
@@ -1010,151 +1453,28 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 480,
+        "x": 550,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "b2e3a7ab3d63e6f4",
-        "type": "inject",
-        "z": "109b7a08f339674a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 100,
-        "wires": [
-            [
-                "095d62752d790492"
-            ]
-        ]
-    },
-    {
-        "id": "f26761e8d0ade48c",
-        "type": "debug",
-        "z": "109b7a08f339674a",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "95bdadead4830db0",
-        "type": "com.autana.insertRow",
-        "z": "109b7a08f339674a",
-        "appwriteConfig": "8b9887394539e844",
-        "databaseName": "main",
-        "tableName": "projects",
-        "name": "",
-        "docId": "pets",
-        "x": 440,
-        "y": 620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f801fdf780be4978",
-        "type": "change",
-        "z": "109b7a08f339674a",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"projectId\":\"pets\",\"apiKey\":\"92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51\"}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 440,
-        "y": 540,
-        "wires": [
-            [
-                "95bdadead4830db0"
-            ]
-        ]
-    },
-    {
-        "id": "4563ec0fbfe26533",
-        "type": "com.autana.readTable",
-        "z": "109b7a08f339674a",
-        "appwriteConfig": "8b9887394539e844",
-        "databaseName": "main",
-        "tableName": "rules",
-        "name": "find rule by command and path",
-        "query": "",
-        "x": 450,
-        "y": 240,
-        "wires": [
-            [
-                "9370c51e4627f64f"
-            ]
-        ]
-    },
-    {
-        "id": "671d6515fbb68154",
-        "type": "switch",
-        "z": "109b7a08f339674a",
-        "name": "pet exists ?",
-        "property": "payload.total",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gt",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 370,
+        "id": "a75a00b6b6e053e7",
+        "type": "subflow:c456eb608cd0ccef",
+        "z": "c137f9ae9b5be96b",
+        "x": 230,
         "y": 460,
         "wires": [
             [
-                "060e882b88c1ce9b"
-            ],
-            [
-                "f801fdf780be4978"
+                "9dd108b86f475d05",
+                "49b9108d6c75c15b"
             ]
         ]
     },
     {
-        "id": "060e882b88c1ce9b",
+        "id": "9dd108b86f475d05",
         "type": "debug",
-        "z": "109b7a08f339674a",
-        "name": "project pets already exists",
+        "z": "c137f9ae9b5be96b",
+        "name": "Create Pets API Rules",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1163,65 +1483,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "095d62752d790492",
-        "type": "change",
-        "z": "109b7a08f339674a",
-        "name": "set params",
-        "rules": [
-            {
-                "t": "set",
-                "p": "command",
-                "pt": "msg",
-                "to": "GET",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "path",
-                "pt": "msg",
-                "to": "/pets/",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "query",
-                "pt": "msg",
-                "to": "[\t    'equal(\"command\",\"' & command & '\")',\t    'equal(\"path\",\"' & path & '\")'\t]",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 140,
-        "wires": [
-            [
-                "4563ec0fbfe26533"
-            ]
-        ]
-    },
-    {
-        "id": "9370c51e4627f64f",
-        "type": "debug",
-        "z": "109b7a08f339674a",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 220,
+        "x": 540,
+        "y": 460,
         "wires": []
     }
 ]
