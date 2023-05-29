@@ -303,6 +303,39 @@
         "icon": "font-awesome/fa-globe"
     },
     {
+        "id": "98574241950962f8",
+        "type": "subflow",
+        "name": "copy Body",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 200,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "37217bb40323f06e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 520,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "37217bb40323f06e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "8b9887394539e844",
         "type": "appwrite-config",
         "endpoint": "https://cloud.appwrite.io/v1",
@@ -2639,6 +2672,31 @@
         ]
     },
     {
+        "id": "37217bb40323f06e",
+        "type": "change",
+        "z": "98574241950962f8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "req.body",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "e4e9b44c02ccfdd1",
         "type": "inject",
         "z": "07021e24ebc3f637",
@@ -2781,16 +2839,16 @@
                 "065eae336a098051"
             ],
             [
-                "f400ca66e281f41d"
+                "36ecb15fe948d7d6"
             ],
             [
-                "f400ca66e281f41d"
+                "e8a5e38fb913b5d9"
             ],
             [
-                "f400ca66e281f41d"
+                "fb23eae4308d5996"
             ],
             [
-                "f400ca66e281f41d"
+                "fc4be68defbfe040"
             ]
         ]
     },
@@ -2802,7 +2860,10 @@
         "links": [
             "f400ca66e281f41d",
             "498b63a998d798c2",
-            "e0b79abcc31fec8c"
+            "e0b79abcc31fec8c",
+            "aba26514c1b5852c",
+            "11eb9cd85889e529",
+            "b89fbcde5a224ca9"
         ],
         "x": 865,
         "y": 340,
@@ -2811,19 +2872,6 @@
                 "b2f601ad1ad58a48"
             ]
         ]
-    },
-    {
-        "id": "f400ca66e281f41d",
-        "type": "link out",
-        "z": "07021e24ebc3f637",
-        "name": "link out 10",
-        "mode": "link",
-        "links": [
-            "6b66ab49ecbaa682"
-        ],
-        "x": 575,
-        "y": 960,
-        "wires": []
     },
     {
         "id": "2167221a18e59a26",
@@ -2862,13 +2910,13 @@
                 "9f035b6065adc9c4"
             ],
             [
-                "498b63a998d798c2"
+                "d7f10b4f79173049"
             ],
             [
-                "498b63a998d798c2"
+                "d7f10b4f79173049"
             ],
             [
-                "498b63a998d798c2"
+                "d7f10b4f79173049"
             ]
         ]
     },
@@ -2881,8 +2929,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 495,
-        "y": 540,
+        "x": 1145,
+        "y": 500,
         "wires": []
     },
     {
@@ -2921,10 +2969,11 @@
         "name": "link out 13",
         "mode": "link",
         "links": [
-            "0404b36dd351c197"
+            "0404b36dd351c197",
+            "b7291304dda25679"
         ],
         "x": 575,
-        "y": 860,
+        "y": 820,
         "wires": []
     },
     {
@@ -2935,8 +2984,8 @@
         "links": [
             "065eae336a098051"
         ],
-        "x": 155,
-        "y": 1180,
+        "x": 385,
+        "y": 1220,
         "wires": [
             [
                 "62c8b0931c5f2399",
@@ -3067,8 +3116,8 @@
         "tableName": "",
         "name": "",
         "query": "",
-        "x": 320,
-        "y": 1180,
+        "x": 550,
+        "y": 1220,
         "wires": [
             [
                 "e0b79abcc31fec8c",
@@ -3085,8 +3134,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 495,
-        "y": 1180,
+        "x": 725,
+        "y": 1220,
         "wires": []
     },
     {
@@ -3102,8 +3151,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 340,
-        "y": 1100,
+        "x": 630,
+        "y": 1160,
         "wires": []
     },
     {
@@ -3119,8 +3168,555 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 380,
-        "y": 1280,
+        "x": 630,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "0cc438b5f8265914",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT READ",
+        "info": "",
+        "x": 130,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "aba26514c1b5852c",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 16",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 785,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "72bffad7e78580b7",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE INSERT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "fab4022fda083804",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER INSERT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "395da7a2da557286",
+        "type": "com.autana.insertRow",
+        "z": "07021e24ebc3f637",
+        "appwriteConfig": "ce1cf8f39be0d7d4",
+        "databaseName": "",
+        "tableName": "",
+        "name": "",
+        "docId": "",
+        "x": 510,
+        "y": 1480,
+        "wires": [
+            [
+                "aba26514c1b5852c",
+                "fab4022fda083804"
+            ]
+        ]
+    },
+    {
+        "id": "36ecb15fe948d7d6",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 17",
+        "mode": "link",
+        "links": [
+            "782816c15fbf2bc4",
+            "7ee2c454d8cfbf42"
+        ],
+        "x": 575,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "782816c15fbf2bc4",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 10",
+        "links": [
+            "36ecb15fe948d7d6"
+        ],
+        "x": 395,
+        "y": 1480,
+        "wires": [
+            [
+                "395da7a2da557286",
+                "72bffad7e78580b7"
+            ]
+        ]
+    },
+    {
+        "id": "4c56d6d0757345a4",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT INSERT",
+        "info": "",
+        "x": 140,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "e8a5e38fb913b5d9",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 18",
+        "mode": "link",
+        "links": [
+            "7548756c8d69d169",
+            "8f7b6c459bafc950"
+        ],
+        "x": 575,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "7548756c8d69d169",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 11",
+        "links": [
+            "e8a5e38fb913b5d9"
+        ],
+        "x": 395,
+        "y": 1780,
+        "wires": [
+            [
+                "534c41e7b48adca6",
+                "de8ffb4c9ed9e492"
+            ]
+        ]
+    },
+    {
+        "id": "11eb9cd85889e529",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 19",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 785,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "de8ffb4c9ed9e492",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE UPDATE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "79e5df297a0c5e62",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER UPDATE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "d3eee615b498b9a8",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT UPDATE",
+        "info": "",
+        "x": 140,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "534c41e7b48adca6",
+        "type": "com.autana.updateRow",
+        "z": "07021e24ebc3f637",
+        "appwriteConfig": "ce1cf8f39be0d7d4",
+        "databaseName": "",
+        "tableName": "",
+        "name": "",
+        "docId": "",
+        "x": 510,
+        "y": 1780,
+        "wires": [
+            [
+                "79e5df297a0c5e62",
+                "11eb9cd85889e529"
+            ]
+        ]
+    },
+    {
+        "id": "b89fbcde5a224ca9",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 20",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 775,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "b4d237d53c859c49",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE DELETE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "ffc0a23645b6741f",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER DELETE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 2180,
+        "wires": []
+    },
+    {
+        "id": "60db5da52cb981b2",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT DELETE",
+        "info": "",
+        "x": 140,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "6cbad8fb91b2d2c5",
+        "type": "com.autana.deleteRow",
+        "z": "07021e24ebc3f637",
+        "appwriteConfig": "ce1cf8f39be0d7d4",
+        "databaseName": "",
+        "tableName": "",
+        "name": "",
+        "docId": "",
+        "x": 510,
+        "y": 2100,
+        "wires": [
+            [
+                "b89fbcde5a224ca9",
+                "ffc0a23645b6741f"
+            ]
+        ]
+    },
+    {
+        "id": "fb23eae4308d5996",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 21",
+        "mode": "link",
+        "links": [
+            "1832433a153aed2e"
+        ],
+        "x": 575,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "1832433a153aed2e",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 12",
+        "links": [
+            "fb23eae4308d5996"
+        ],
+        "x": 395,
+        "y": 2100,
+        "wires": [
+            [
+                "6cbad8fb91b2d2c5",
+                "b4d237d53c859c49"
+            ]
+        ]
+    },
+    {
+        "id": "03c3fd362d1edc51",
+        "type": "change",
+        "z": "07021e24ebc3f637",
+        "name": "404 NOT FOUND",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "404",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            [
+                "498b63a998d798c2"
+            ]
+        ]
+    },
+    {
+        "id": "e36669525c3d404c",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 13",
+        "links": [
+            "d7f10b4f79173049",
+            "fc4be68defbfe040"
+        ],
+        "x": 865,
+        "y": 500,
+        "wires": [
+            [
+                "03c3fd362d1edc51"
+            ]
+        ]
+    },
+    {
+        "id": "d7f10b4f79173049",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 22",
+        "mode": "link",
+        "links": [
+            "e36669525c3d404c"
+        ],
+        "x": 495,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "fc4be68defbfe040",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 23",
+        "mode": "link",
+        "links": [
+            "e36669525c3d404c"
+        ],
+        "x": 575,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "c88099de92e3afe6",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "send response",
+        "info": "",
+        "x": 880,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "4448fa478d4f390d",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "send response",
+        "info": "",
+        "x": 900,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "5eb733fb1fbd90a3",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "send response",
+        "info": "",
+        "x": 900,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "4f183855b8fb742d",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "send response",
+        "info": "",
+        "x": 830,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "5a65f9d8033395ec",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "from document operation",
+        "info": "",
+        "x": 250,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "0d45379061c34a52",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "from document operation",
+        "info": "",
+        "x": 250,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "528a16a56d51e27d",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "from document operation",
+        "info": "",
+        "x": 250,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "b088cf6c027633d2",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "from document operation",
+        "info": "",
+        "x": 250,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "86b786c5f160acbb",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT READ",
+        "info": "",
+        "x": 690,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "766c79fabc48f821",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT INSERT",
+        "info": "",
+        "x": 700,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "2d9842a6fa2bb06f",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT UPDATE",
+        "info": "",
+        "x": 700,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "e174eb2e5c50445f",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT DELETE",
+        "info": "",
+        "x": 700,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "648a87a933f244ac",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "otherwise 404",
+        "info": "",
+        "x": 670,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "14fc4e2fbd2f3f74",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "otherwise 404",
+        "info": "",
+        "x": 590,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "9bb695f0f63c7f55",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "DOCUMENT",
+        "info": "",
+        "x": 590,
+        "y": 480,
         "wires": []
     },
     {
