@@ -318,6 +318,13 @@
         "apikey": "92270ab5488820377885a91f92e46b45f548b981f7b6e260dc0267765621edaf622ee1b4b76946cf7cdeec2fc9b8524b24132dbe366589bb2c54279c8df79eaf8d44ce02e4b36926e2198aa528253145bf1c1c1b9cfc3e9ff7f8da01b5260ab1f6824a137594f86026d777c1c2421d6c78472f97752c9d0dc841b5ff60bcef51"
     },
     {
+        "id": "ce1cf8f39be0d7d4",
+        "type": "appwrite-config",
+        "endpoint": "DYNAMIC",
+        "project": "DYNAMIC",
+        "apikey": "DYNAMIC"
+    },
+    {
         "id": "75c09e600c694c46",
         "type": "com.autana.createTable",
         "z": "7e59738d989d54b6",
@@ -2694,11 +2701,11 @@
         "id": "b2f601ad1ad58a48",
         "type": "http response",
         "z": "07021e24ebc3f637",
-        "name": "",
+        "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 430,
-        "y": 360,
+        "x": 1000,
+        "y": 340,
         "wires": []
     },
     {
@@ -2714,29 +2721,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 220,
+        "x": 900,
+        "y": 180,
         "wires": []
-    },
-    {
-        "id": "5657b4ad67ace405",
-        "type": "function",
-        "z": "07021e24ebc3f637",
-        "name": "function 1",
-        "func": "var msg = msg;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 280,
-        "wires": [
-            [
-                "dcae466a56fd8449",
-                "b2f601ad1ad58a48"
-            ]
-        ]
     },
     {
         "id": "9e3e93a5d21d8ebb",
@@ -2747,9 +2734,394 @@
         "y": 200,
         "wires": [
             [
-                "5657b4ad67ace405"
+                "dcae466a56fd8449",
+                "a0431d57797a7af0"
             ]
         ]
+    },
+    {
+        "id": "429fb8cdb3880018",
+        "type": "switch",
+        "z": "07021e24ebc3f637",
+        "name": "select DOCUMENT operation",
+        "property": "req.autana.action.operation",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "READ",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "INSERT",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "UPDATE",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "DELETE",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 350,
+        "y": 900,
+        "wires": [
+            [
+                "065eae336a098051"
+            ],
+            [
+                "f400ca66e281f41d"
+            ],
+            [
+                "f400ca66e281f41d"
+            ],
+            [
+                "f400ca66e281f41d"
+            ],
+            [
+                "f400ca66e281f41d"
+            ]
+        ]
+    },
+    {
+        "id": "6b66ab49ecbaa682",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 6",
+        "links": [
+            "f400ca66e281f41d",
+            "498b63a998d798c2",
+            "e0b79abcc31fec8c"
+        ],
+        "x": 865,
+        "y": 340,
+        "wires": [
+            [
+                "b2f601ad1ad58a48"
+            ]
+        ]
+    },
+    {
+        "id": "f400ca66e281f41d",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 10",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 575,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "2167221a18e59a26",
+        "type": "switch",
+        "z": "07021e24ebc3f637",
+        "name": "select actionType",
+        "property": "req.autana.action.actionType",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "DOCUMENT",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "FUNCTION",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "STORAGE",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 310,
+        "y": 540,
+        "wires": [
+            [
+                "9f035b6065adc9c4"
+            ],
+            [
+                "498b63a998d798c2"
+            ],
+            [
+                "498b63a998d798c2"
+            ],
+            [
+                "498b63a998d798c2"
+            ]
+        ]
+    },
+    {
+        "id": "498b63a998d798c2",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 11",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 495,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "9f035b6065adc9c4",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 12",
+        "mode": "link",
+        "links": [
+            "de2aa43ba4755d52"
+        ],
+        "x": 495,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "de2aa43ba4755d52",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 7",
+        "links": [
+            "9f035b6065adc9c4"
+        ],
+        "x": 155,
+        "y": 760,
+        "wires": [
+            [
+                "c55b0f53a54ec0d2"
+            ]
+        ]
+    },
+    {
+        "id": "065eae336a098051",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 13",
+        "mode": "link",
+        "links": [
+            "0404b36dd351c197"
+        ],
+        "x": 575,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "0404b36dd351c197",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 8",
+        "links": [
+            "065eae336a098051"
+        ],
+        "x": 155,
+        "y": 1180,
+        "wires": [
+            [
+                "62c8b0931c5f2399",
+                "9270ce089d3fe629"
+            ]
+        ]
+    },
+    {
+        "id": "17dcc370d4672d54",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "send response",
+        "info": "",
+        "x": 920,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "689f9ca52c116501",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "select actionType like DOCUMENT, FUNCTION or STORAGE",
+        "info": "",
+        "x": 300,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a0431d57797a7af0",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 14",
+        "mode": "link",
+        "links": [
+            "72969fbf592fb8ea"
+        ],
+        "x": 485,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "72969fbf592fb8ea",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 9",
+        "links": [
+            "a0431d57797a7af0"
+        ],
+        "x": 155,
+        "y": 480,
+        "wires": [
+            [
+                "2167221a18e59a26"
+            ]
+        ]
+    },
+    {
+        "id": "c596930578e66a33",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "select DOCUMENT operation like READ, INSERT, UPDATE or DELETE",
+        "info": "",
+        "x": 330,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c55b0f53a54ec0d2",
+        "type": "change",
+        "z": "07021e24ebc3f637",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "endpoint",
+                "pt": "msg",
+                "to": "req.autana.action.project.endpoint",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "project",
+                "pt": "msg",
+                "to": "req.autana.action.project.projectId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "req.autana.action.project.apiKey",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "databaseName",
+                "pt": "msg",
+                "to": "req.autana.action.databaseId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "tableName",
+                "pt": "msg",
+                "to": "req.autana.action.collectionId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 800,
+        "wires": [
+            [
+                "429fb8cdb3880018"
+            ]
+        ]
+    },
+    {
+        "id": "62c8b0931c5f2399",
+        "type": "com.autana.readTable",
+        "z": "07021e24ebc3f637",
+        "appwriteConfig": "ce1cf8f39be0d7d4",
+        "databaseName": "",
+        "tableName": "",
+        "name": "",
+        "query": "",
+        "x": 320,
+        "y": 1180,
+        "wires": [
+            [
+                "e0b79abcc31fec8c",
+                "ea675486b4038d48"
+            ]
+        ]
+    },
+    {
+        "id": "e0b79abcc31fec8c",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 15",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 495,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "9270ce089d3fe629",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE READ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "ea675486b4038d48",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER READ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 1280,
+        "wires": []
     },
     {
         "id": "1f5e86cf01c16650",
