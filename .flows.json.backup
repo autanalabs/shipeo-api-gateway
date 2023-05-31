@@ -215,11 +215,11 @@
         ],
         "out": [
             {
-                "x": 700,
-                "y": 520,
+                "x": 740,
+                "y": 740,
                 "wires": [
                     {
-                        "id": "c94ce775d0d07506",
+                        "id": "2bca003ba874b394",
                         "port": 0
                     }
                 ]
@@ -1529,7 +1529,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"{\\\"docId\\\": req.autana.pathParams.petId, \\\"body\\\": req.body}\"}",
+                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"{\\\"docId\\\": req.autana.pathParams.petId}\"}",
                 "tot": "json"
             }
         ],
@@ -1554,8 +1554,58 @@
         "x": 530,
         "y": 460,
         "wires": [
+            [
+                "4d50e5cef8a9f63e"
+            ]
+        ]
+    },
+    {
+        "id": "4d50e5cef8a9f63e",
+        "type": "change",
+        "z": "c456eb608cd0ccef",
+        "name": "configure create_es_pet",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":\"POST\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\":\\\"unique()\\\",\\\"body\\\":{\\\"name\\\": req.body.name, \\\"type\\\":req.body.tipo, \\\"gender\\\":req.body.genero, \\\"age\\\":req.body.edad}}\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "2bca003ba874b394"
+            ]
+        ]
+    },
+    {
+        "id": "2bca003ba874b394",
+        "type": "subflow:8e844c7077bbffbc",
+        "z": "c456eb608cd0ccef",
+        "name": "create create_es_pet",
+        "x": 560,
+        "y": 640,
+        "wires": [
             []
         ]
+    },
+    {
+        "id": "f2b1d7bb44b54f84",
+        "type": "comment",
+        "z": "c456eb608cd0ccef",
+        "name": "with body transformation",
+        "info": "",
+        "x": 170,
+        "y": 560,
+        "wires": []
     },
     {
         "id": "27e010777d86ff75",
@@ -4767,7 +4817,7 @@
                 "p": "payload",
                 "pt": "msg",
                 "to": "inboundTransformResult.body",
-                "tot": "str"
+                "tot": "msg"
             }
         ],
         "action": "",
