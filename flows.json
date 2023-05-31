@@ -1449,7 +1449,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"POST\",\"path\":\"/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\"}",
+                "to": "{\"command\":\"POST\",\"path\":\"/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\": \\\"unique()\\\", \\\"body\\\": req.body}\"}",
                 "tot": "json"
             }
         ],
@@ -1489,7 +1489,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"POST\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"update_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"UPDATE\",\"inboundTransform\":\"req.autana.pathParams.petId\"}",
+                "to": "{\"command\":\"POST\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"update_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"UPDATE\",\"inboundTransform\":\"{\\\"docId\\\": req.autana.pathParams.petId, \\\"body\\\": req.body}\"}",
                 "tot": "json"
             }
         ],
@@ -1529,7 +1529,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"req.autana.pathParams.petId\"}",
+                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"{\\\"docId\\\": req.autana.pathParams.petId, \\\"body\\\": req.body}\"}",
                 "tot": "json"
             }
         ],
@@ -3362,7 +3362,7 @@
             "1f0dc3e955551512"
         ],
         "x": 775,
-        "y": 1820,
+        "y": 2040,
         "wires": []
     },
     {
@@ -3378,8 +3378,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 1760,
+        "x": 570,
+        "y": 1780,
         "wires": []
     },
     {
@@ -3396,7 +3396,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 1940,
+        "y": 2100,
         "wires": []
     },
     {
@@ -3409,7 +3409,7 @@
         "name": "",
         "docId": "",
         "x": 570,
-        "y": 1880,
+        "y": 2040,
         "wires": [
             [
                 "aba26514c1b5852c",
@@ -3444,7 +3444,7 @@
         "wires": [
             [
                 "72bffad7e78580b7",
-                "73944b8ae31d08c7"
+                "c5b69af1e6784837"
             ]
         ]
     },
@@ -3481,7 +3481,7 @@
             "e8a5e38fb913b5d9"
         ],
         "x": 395,
-        "y": 2140,
+        "y": 2280,
         "wires": [
             [
                 "de8ffb4c9ed9e492",
@@ -3499,7 +3499,7 @@
             "1f0dc3e955551512"
         ],
         "x": 935,
-        "y": 2540,
+        "y": 2600,
         "wires": []
     },
     {
@@ -3516,7 +3516,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 2080,
+        "y": 2220,
         "wires": []
     },
     {
@@ -3533,7 +3533,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 840,
-        "y": 2640,
+        "y": 2700,
         "wires": []
     },
     {
@@ -3543,7 +3543,7 @@
         "name": "DOCUMENT UPDATE",
         "info": "",
         "x": 140,
-        "y": 2060,
+        "y": 2200,
         "wires": []
     },
     {
@@ -3556,7 +3556,7 @@
         "name": "",
         "docId": "",
         "x": 650,
-        "y": 2540,
+        "y": 2600,
         "wires": [
             [
                 "79e5df297a0c5e62",
@@ -3574,7 +3574,7 @@
             "1f0dc3e955551512"
         ],
         "x": 885,
-        "y": 3040,
+        "y": 3120,
         "wires": []
     },
     {
@@ -3591,7 +3591,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
-        "y": 2740,
+        "y": 2820,
         "wires": []
     },
     {
@@ -3608,7 +3608,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 840,
-        "y": 3160,
+        "y": 3240,
         "wires": []
     },
     {
@@ -3618,7 +3618,7 @@
         "name": "DOCUMENT DELETE",
         "info": "",
         "x": 140,
-        "y": 2720,
+        "y": 2800,
         "wires": []
     },
     {
@@ -3631,7 +3631,7 @@
         "name": "",
         "docId": "",
         "x": 590,
-        "y": 3040,
+        "y": 3120,
         "wires": [
             [
                 "b89fbcde5a224ca9",
@@ -3661,7 +3661,7 @@
             "fb23eae4308d5996"
         ],
         "x": 395,
-        "y": 2800,
+        "y": 2880,
         "wires": [
             [
                 "b4d237d53c859c49",
@@ -3747,7 +3747,7 @@
         "name": "send response",
         "info": "",
         "x": 990,
-        "y": 3040,
+        "y": 3120,
         "wires": []
     },
     {
@@ -3757,7 +3757,7 @@
         "name": "send response",
         "info": "",
         "x": 1040,
-        "y": 2540,
+        "y": 2600,
         "wires": []
     },
     {
@@ -3766,8 +3766,8 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 890,
-        "y": 1820,
+        "x": 880,
+        "y": 2040,
         "wires": []
     },
     {
@@ -3807,7 +3807,7 @@
         "name": "from document operation",
         "info": "",
         "x": 250,
-        "y": 2140,
+        "y": 2280,
         "wires": []
     },
     {
@@ -3817,7 +3817,7 @@
         "name": "from document operation",
         "info": "",
         "x": 250,
-        "y": 2800,
+        "y": 2880,
         "wires": []
     },
     {
@@ -3889,32 +3889,6 @@
         "x": 590,
         "y": 480,
         "wires": []
-    },
-    {
-        "id": "73944b8ae31d08c7",
-        "type": "subflow:98574241950962f8",
-        "z": "07021e24ebc3f637",
-        "name": "",
-        "x": 570,
-        "y": 1820,
-        "wires": [
-            [
-                "395da7a2da557286"
-            ]
-        ]
-    },
-    {
-        "id": "5f0326f2f1a18b20",
-        "type": "subflow:98574241950962f8",
-        "z": "07021e24ebc3f637",
-        "name": "",
-        "x": 650,
-        "y": 2460,
-        "wires": [
-            [
-                "534c41e7b48adca6"
-            ]
-        ]
     },
     {
         "id": "6bf55752c012dbc4",
@@ -4189,7 +4163,7 @@
         "type": "debug",
         "z": "07021e24ebc3f637",
         "name": "AFTER TRANSFORM",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4198,7 +4172,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1040,
-        "y": 2140,
+        "y": 2280,
         "wires": []
     },
     {
@@ -4207,7 +4181,7 @@
         "z": "07021e24ebc3f637",
         "name": "parse docId",
         "x": 650,
-        "y": 2220,
+        "y": 2360,
         "wires": [
             [
                 "9db5b6c0b42b66a4",
@@ -4233,20 +4207,27 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 2300,
+        "y": 2460,
         "wires": []
     },
     {
         "id": "f8b688378c2d0e25",
         "type": "change",
         "z": "07021e24ebc3f637",
-        "name": "",
+        "name": "set docID and body",
         "rules": [
             {
                 "t": "set",
                 "p": "docId",
                 "pt": "msg",
-                "to": "inboundTransformResult",
+                "to": "inboundTransformResult.docId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "inboundTransformResult.body",
                 "tot": "msg"
             }
         ],
@@ -4255,11 +4236,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 2380,
+        "x": 670,
+        "y": 2440,
         "wires": [
             [
-                "5f0326f2f1a18b20"
+                "534c41e7b48adca6",
+                "4e55e047efd88197"
             ]
         ]
     },
@@ -4273,7 +4255,7 @@
             "ac2beb1f3d92dffd"
         ],
         "x": 955,
-        "y": 2200,
+        "y": 2340,
         "wires": []
     },
     {
@@ -4286,7 +4268,7 @@
             "546e15a25954a792"
         ],
         "x": 535,
-        "y": 2380,
+        "y": 2440,
         "wires": [
             [
                 "f8b688378c2d0e25"
@@ -4340,7 +4322,8 @@
         "name": "link BAD_REQUEST",
         "links": [
             "6d7bdbdd63ddddb2",
-            "fc4041d23c5c30d7"
+            "fc4041d23c5c30d7",
+            "a8440011448ce8e3"
         ],
         "x": 985,
         "y": 360,
@@ -4360,7 +4343,7 @@
             "14f48e934e443e02"
         ],
         "x": 955,
-        "y": 2260,
+        "y": 2400,
         "wires": []
     },
     {
@@ -4370,7 +4353,7 @@
         "name": "BAD REQUEST",
         "info": "",
         "x": 1060,
-        "y": 2260,
+        "y": 2400,
         "wires": []
     },
     {
@@ -4380,7 +4363,7 @@
         "name": "update",
         "info": "",
         "x": 1030,
-        "y": 2200,
+        "y": 2340,
         "wires": []
     },
     {
@@ -4388,7 +4371,7 @@
         "type": "debug",
         "z": "07021e24ebc3f637",
         "name": "AFTER TRANSFORM",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4397,7 +4380,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 980,
-        "y": 2780,
+        "y": 2860,
         "wires": []
     },
     {
@@ -4406,7 +4389,7 @@
         "z": "07021e24ebc3f637",
         "name": "parse docId",
         "x": 590,
-        "y": 2860,
+        "y": 2940,
         "wires": [
             [
                 "71357a9a5d0ebf45",
@@ -4432,7 +4415,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 970,
-        "y": 2940,
+        "y": 3020,
         "wires": []
     },
     {
@@ -4445,7 +4428,7 @@
             "14f48e934e443e02"
         ],
         "x": 895,
-        "y": 2900,
+        "y": 2980,
         "wires": []
     },
     {
@@ -4455,7 +4438,7 @@
         "name": "BAD REQUEST",
         "info": "",
         "x": 1000,
-        "y": 2900,
+        "y": 2980,
         "wires": []
     },
     {
@@ -4465,7 +4448,7 @@
         "name": "delete",
         "info": "",
         "x": 970,
-        "y": 2840,
+        "y": 2920,
         "wires": []
     },
     {
@@ -4478,7 +4461,7 @@
             "2df9db8960835bfa"
         ],
         "x": 895,
-        "y": 2840,
+        "y": 2920,
         "wires": []
     },
     {
@@ -4490,37 +4473,10 @@
             "2abd4d6ce3a84f2e"
         ],
         "x": 465,
-        "y": 2960,
+        "y": 3040,
         "wires": [
             [
-                "950f0c00ca6202b6"
-            ]
-        ]
-    },
-    {
-        "id": "950f0c00ca6202b6",
-        "type": "change",
-        "z": "07021e24ebc3f637",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "docId",
-                "pt": "msg",
-                "to": "inboundTransformResult",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 600,
-        "y": 2960,
-        "wires": [
-            [
-                "6cbad8fb91b2d2c5"
+                "ff436e3c81e2d2a2"
             ]
         ]
     },
@@ -4650,6 +4606,198 @@
         ],
         "x": 1245,
         "y": 760,
+        "wires": []
+    },
+    {
+        "id": "ff436e3c81e2d2a2",
+        "type": "change",
+        "z": "07021e24ebc3f637",
+        "name": "set docID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "docId",
+                "pt": "msg",
+                "to": "inboundTransformResult.docId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 3040,
+        "wires": [
+            [
+                "6cbad8fb91b2d2c5"
+            ]
+        ]
+    },
+    {
+        "id": "c5b69af1e6784837",
+        "type": "subflow:69b3865e779a9ae0",
+        "z": "07021e24ebc3f637",
+        "name": "parse docId",
+        "x": 550,
+        "y": 1840,
+        "wires": [
+            [
+                "97522cf348d1e2da",
+                "8c9d989b947c842e"
+            ],
+            [
+                "408b41c3a558b024",
+                "a8440011448ce8e3"
+            ]
+        ]
+    },
+    {
+        "id": "97522cf348d1e2da",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "408b41c3a558b024",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "NO TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "a8440011448ce8e3",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 40",
+        "mode": "link",
+        "links": [
+            "14f48e934e443e02"
+        ],
+        "x": 815,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "603712a4737985d9",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "BAD REQUEST",
+        "info": "",
+        "x": 920,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "8c9d989b947c842e",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 41",
+        "mode": "link",
+        "links": [
+            "5cae4e738e67fd6d"
+        ],
+        "x": 815,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "71650c82408cb9c7",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "insert",
+        "info": "",
+        "x": 890,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "5cae4e738e67fd6d",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link in 21",
+        "links": [
+            "8c9d989b947c842e"
+        ],
+        "x": 375,
+        "y": 1960,
+        "wires": [
+            [
+                "97f74e4fa6e0d1d3"
+            ]
+        ]
+    },
+    {
+        "id": "97f74e4fa6e0d1d3",
+        "type": "change",
+        "z": "07021e24ebc3f637",
+        "name": "set docID and body",
+        "rules": [
+            {
+                "t": "set",
+                "p": "docId",
+                "pt": "msg",
+                "to": "inboundTransformResult.docId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "inboundTransformResult.body",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1960,
+        "wires": [
+            [
+                "395da7a2da557286"
+            ]
+        ]
+    },
+    {
+        "id": "4e55e047efd88197",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE APPLY UPDATE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 2540,
         "wires": []
     },
     {
