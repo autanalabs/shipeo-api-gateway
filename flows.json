@@ -1616,7 +1616,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"POST\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\":\\\"unique()\\\",\\\"body\\\":{\\\"name\\\": req.body.nombre, \\\"type\\\":req.body.tipo, \\\"gender\\\":req.body.genero, \\\"age\\\":req.body.edad}}\"}",
+                "to": "{\"command\":\"POST\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\":\\\"unique()\\\",\\\"body\\\":{\\\"name\\\": req.body.nombre, \\\"type\\\":req.body.tipo, \\\"gender\\\":req.body.genero, \\\"age\\\":req.body.edad}}\",\"outboundTransform\":\"{\\\"body\\\":{\\\"id\\\": payload.'$id', \\\"nombre\\\": payload.name, \\\"tipo\\\":payload.type, \\\"genero\\\":payload.gender, \\\"edad\\\":payload.age}}\"}",
                 "tot": "json"
             }
         ],
@@ -1717,7 +1717,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"[\\\"equal('$id', '\\\" & req.autana.pathParams.petId & \\\"')\\\"]\",\"outboundTransform\":\"{\\\"body\\\":{\\\"nombre\\\": payload.documents[0].name, \\\"tipos\\\":payload.documents[0].type, \\\"genero\\\":payload.documents[0].gender, \\\"edad\\\":payload.documents[0].age}}\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"read_pet_by_id_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"inboundTransform\":\"[\\\"equal('$id', '\\\" & req.autana.pathParams.petId & \\\"')\\\"]\",\"outboundTransform\":\"{\\\"body\\\":{\\\"nombre\\\": payload.documents[0].name, \\\"tipo\\\":payload.documents[0].type, \\\"genero\\\":payload.documents[0].gender, \\\"edad\\\":payload.documents[0].age}}\"}",
                 "tot": "json"
             }
         ],
@@ -4710,7 +4710,7 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1305,
+        "x": 1375,
         "y": 960,
         "wires": []
     },
@@ -5029,11 +5029,12 @@
         "links": [
             "96a56f6bb0f7f307"
         ],
-        "x": 1005,
+        "x": 985,
         "y": 900,
         "wires": [
             [
-                "380ec78a4a808304"
+                "380ec78a4a808304",
+                "880869cc35662a2a"
             ]
         ]
     },
@@ -5059,10 +5060,12 @@
         "y": 900,
         "wires": [
             [
-                "7b33d50450a0d798"
+                "7b33d50450a0d798",
+                "045b0ad62f6c73d7"
             ],
             [
-                "f8ea83b111728779"
+                "f8ea83b111728779",
+                "40222ccdb2d98eba"
             ]
         ]
     },
@@ -5085,7 +5088,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1390,
+        "x": 1430,
         "y": 860,
         "wires": [
             [
@@ -5102,7 +5105,7 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1495,
+        "x": 1535,
         "y": 860,
         "wires": []
     },
@@ -5122,7 +5125,7 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 1420,
+        "x": 1490,
         "y": 960,
         "wires": []
     },
@@ -5132,7 +5135,7 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 1600,
+        "x": 1640,
         "y": 860,
         "wires": []
     },
@@ -5145,7 +5148,7 @@
             "380ec78a4a808304"
         ],
         "uncaught": false,
-        "x": 1630,
+        "x": 1700,
         "y": 960,
         "wires": [
             [
@@ -5162,7 +5165,7 @@
         "links": [
             "ddf91e6188e9b20d"
         ],
-        "x": 1775,
+        "x": 1845,
         "y": 960,
         "wires": []
     },
@@ -5172,8 +5175,59 @@
         "z": "07021e24ebc3f637",
         "name": "500 ERROR",
         "info": "",
-        "x": 1870,
+        "x": 1940,
         "y": 960,
+        "wires": []
+    },
+    {
+        "id": "045b0ad62f6c73d7",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "AFTER RESPONSE TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1460,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "40222ccdb2d98eba",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "NO RESPONSE TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "880869cc35662a2a",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "BEFORE RESPONSE TRANSFORM",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 980,
         "wires": []
     },
     {
