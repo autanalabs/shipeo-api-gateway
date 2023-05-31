@@ -1666,7 +1666,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"read_all_pets_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"outboundTransform\":\"{\\\"body\\\": {\\\"documents\\\": payload.documents.{\\\"id\\\": $.'$id', \\\"nombre\\\": name, \\\"tipo\\\": type, \\\"genero\\\": gender, \\\"edad\\\": age}}\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"read_all_pets_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"outboundTransform\":\"{\\\"body\\\": {\\\"documents\\\": payload.documents.{\\\"id\\\": $.'$id', \\\"nombre\\\": name, \\\"tipo\\\": type, \\\"genero\\\": gender == 'F' ? \\\"FEMENINO\\\" : \\\"MASCULINO\\\", \\\"edad\\\": age}}}\"}",
                 "tot": "json"
             }
         ],
