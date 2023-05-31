@@ -2854,7 +2854,7 @@
     },
     {
         "id": "ba4f6e3aed2f1ef5",
-        "type": "transform",
+        "type": "com.autana.jsonata",
         "z": "69b3865e779a9ae0",
         "name": "",
         "template": "req.autana.action.inboundTransform",
