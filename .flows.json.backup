@@ -1616,7 +1616,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"POST\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\":\\\"unique()\\\",\\\"body\\\":{\\\"name\\\": req.body.nombre, \\\"type\\\":req.body.tipo, \\\"gender\\\":req.body.genero, \\\"age\\\":req.body.edad}}\",\"outboundTransform\":\"{\\\"body\\\":{\\\"id\\\": payload.$id, \\\"nombre\\\": payload.name, \\\"tipo\\\":payload.type, \\\"genero\\\":payload.gender, \\\"edad\\\":payload.age}}\"}",
+                "to": "{\"command\":\"POST\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"create_pet_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"INSERT\",\"inboundTransform\":\"{\\\"docId\\\":\\\"unique()\\\",\\\"body\\\":{\\\"name\\\": req.body.nombre, \\\"type\\\":req.body.tipo, \\\"gender\\\":req.body.genero, \\\"age\\\":req.body.edad}}\",\"outboundTransform\":\"{\\\"body\\\":{\\\"id\\\": payload.'$id', \\\"nombre\\\": payload.name, \\\"tipo\\\":payload.type, \\\"genero\\\":payload.gender, \\\"edad\\\":payload.age}}\"}",
                 "tot": "json"
             }
         ],
@@ -1666,7 +1666,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"read_all_pets_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"outboundTransform\":\"{\\\"body\\\":{\\\"nombre\\\": payload.name, \\\"tipos\\\":payload.type, \\\"genero\\\":payload.gender, \\\"edad\\\":payload.age}}\"}",
+                "to": "{\"command\":\"GET\",\"path\":\"/es/pets/\",\"projectId\":\"pets\",\"actionId\":\"read_all_pets_es\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"READ\",\"outboundTransform\":\"{\\\"body\\\": {\\\"documents\\\": payload.documents.{\\\"id\\\": $.'$id', \\\"nombre\\\": name, \\\"tipo\\\": type, \\\"genero\\\": gender, \\\"edad\\\": age}}\"}",
                 "tot": "json"
             }
         ],
@@ -4307,8 +4307,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1265,
-        "y": 480,
+        "x": 1345,
+        "y": 500,
         "wires": []
     },
     {
@@ -4334,7 +4334,8 @@
         "y": 480,
         "wires": [
             [
-                "9039d29bdf160d9d"
+                "9039d29bdf160d9d",
+                "6b5e02af65c998fa"
             ]
         ]
     },
@@ -5228,6 +5229,23 @@
         "statusType": "auto",
         "x": 1030,
         "y": 980,
+        "wires": []
+    },
+    {
+        "id": "6b5e02af65c998fa",
+        "type": "debug",
+        "z": "07021e24ebc3f637",
+        "name": "ERROR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 440,
         "wires": []
     },
     {
