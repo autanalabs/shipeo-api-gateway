@@ -1529,7 +1529,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"[\\\"equal('$id', '\\\" & req.autana.pathParams.petId & \\\"')\\\"]\"}",
+                "to": "{\"command\":\"DELETE\",\"path\":\"/pets/:petId\",\"projectId\":\"pets\",\"actionId\":\"delete_pet\",\"actionType\":\"DOCUMENT\",\"databaseId\":\"example\",\"collectionId\":\"pets\",\"operation\":\"DELETE\",\"inboundTransform\":\"req.autana.pathParams.petId\"}",
                 "tot": "json"
             }
         ],
@@ -2854,14 +2854,13 @@
     },
     {
         "id": "ba4f6e3aed2f1ef5",
-        "type": "transform",
+        "type": "com.autana.jsonata",
         "z": "69b3865e779a9ae0",
         "name": "",
         "template": "req.autana.action.inboundTransform",
         "templateType": "msg",
         "target": "inboundTransformResult",
         "targetType": "msg",
-        "outputs": 1,
         "x": 320,
         "y": 300,
         "wires": [
@@ -2934,8 +2933,8 @@
         "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 1000,
-        "y": 340,
+        "x": 1140,
+        "y": 920,
         "wires": []
     },
     {
@@ -3032,15 +3031,12 @@
         "links": [
             "f400ca66e281f41d",
             "498b63a998d798c2",
-            "e0b79abcc31fec8c",
-            "aba26514c1b5852c",
-            "11eb9cd85889e529",
-            "b89fbcde5a224ca9",
             "9039d29bdf160d9d",
-            "236d90cb66ce23de"
+            "236d90cb66ce23de",
+            "f8ea83b111728779"
         ],
-        "x": 865,
-        "y": 340,
+        "x": 1005,
+        "y": 920,
         "wires": [
             [
                 "b2f601ad1ad58a48"
@@ -3103,8 +3099,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1145,
-        "y": 500,
+        "x": 1265,
+        "y": 420,
         "wires": []
     },
     {
@@ -3173,8 +3169,8 @@
         "z": "07021e24ebc3f637",
         "name": "send response",
         "info": "",
-        "x": 920,
-        "y": 280,
+        "x": 1060,
+        "y": 860,
         "wires": []
     },
     {
@@ -3306,7 +3302,7 @@
         "name": "link out 15",
         "mode": "link",
         "links": [
-            "6b66ab49ecbaa682"
+            "1f0dc3e955551512"
         ],
         "x": 855,
         "y": 1600,
@@ -3363,7 +3359,7 @@
         "name": "link out 16",
         "mode": "link",
         "links": [
-            "6b66ab49ecbaa682"
+            "1f0dc3e955551512"
         ],
         "x": 775,
         "y": 1820,
@@ -3500,7 +3496,7 @@
         "name": "link out 19",
         "mode": "link",
         "links": [
-            "6b66ab49ecbaa682"
+            "1f0dc3e955551512"
         ],
         "x": 935,
         "y": 2540,
@@ -3575,7 +3571,7 @@
         "name": "link out 20",
         "mode": "link",
         "links": [
-            "6b66ab49ecbaa682"
+            "1f0dc3e955551512"
         ],
         "x": 885,
         "y": 3040,
@@ -3692,8 +3688,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1010,
-        "y": 500,
+        "x": 1130,
+        "y": 420,
         "wires": [
             [
                 "498b63a998d798c2"
@@ -3704,13 +3700,14 @@
         "id": "e36669525c3d404c",
         "type": "link in",
         "z": "07021e24ebc3f637",
-        "name": "link in 13",
+        "name": "link NOT_FOUND",
         "links": [
+            "c59a1fbb53b16ddd",
             "d7f10b4f79173049",
             "fc4be68defbfe040"
         ],
-        "x": 865,
-        "y": 500,
+        "x": 985,
+        "y": 420,
         "wires": [
             [
                 "03c3fd362d1edc51"
@@ -4116,8 +4113,8 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1145,
-        "y": 560,
+        "x": 1265,
+        "y": 480,
         "wires": []
     },
     {
@@ -4139,8 +4136,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1000,
-        "y": 560,
+        "x": 1120,
+        "y": 480,
         "wires": [
             [
                 "9039d29bdf160d9d"
@@ -4151,12 +4148,13 @@
         "id": "ddf91e6188e9b20d",
         "type": "link in",
         "z": "07021e24ebc3f637",
-        "name": "link in 16",
+        "name": "link SERVER_ERROR",
         "links": [
+            "1159a6bff26ed725",
             "b35e047d22937624"
         ],
-        "x": 865,
-        "y": 560,
+        "x": 985,
+        "y": 480,
         "wires": [
             [
                 "f3fd90198646bfd3"
@@ -4314,8 +4312,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1020,
-        "y": 440,
+        "x": 1140,
+        "y": 360,
         "wires": [
             [
                 "236d90cb66ce23de"
@@ -4331,21 +4329,21 @@
         "links": [
             "6b66ab49ecbaa682"
         ],
-        "x": 1145,
-        "y": 440,
+        "x": 1265,
+        "y": 360,
         "wires": []
     },
     {
         "id": "14f48e934e443e02",
         "type": "link in",
         "z": "07021e24ebc3f637",
-        "name": "link in 19",
+        "name": "link BAD_REQUEST",
         "links": [
             "6d7bdbdd63ddddb2",
             "fc4041d23c5c30d7"
         ],
-        "x": 865,
-        "y": 440,
+        "x": 985,
+        "y": 360,
         "wires": [
             [
                 "2f737075c2505f80"
@@ -4525,6 +4523,134 @@
                 "6cbad8fb91b2d2c5"
             ]
         ]
+    },
+    {
+        "id": "f8ea83b111728779",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 37",
+        "mode": "link",
+        "links": [
+            "6b66ab49ecbaa682"
+        ],
+        "x": 1265,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1f0dc3e955551512",
+        "type": "link in",
+        "z": "07021e24ebc3f637",
+        "name": "link validate_errors",
+        "links": [
+            "11eb9cd85889e529",
+            "aba26514c1b5852c",
+            "b89fbcde5a224ca9",
+            "e0b79abcc31fec8c"
+        ],
+        "x": 985,
+        "y": 620,
+        "wires": [
+            [
+                "e1e8eec22a011727"
+            ]
+        ]
+    },
+    {
+        "id": "b022d71edbafda40",
+        "type": "comment",
+        "z": "07021e24ebc3f637",
+        "name": "validate errors",
+        "info": "",
+        "x": 1040,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "e1e8eec22a011727",
+        "type": "switch",
+        "z": "07021e24ebc3f637",
+        "name": "no has errors ?",
+        "property": "error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 620,
+        "wires": [
+            [
+                "f8ea83b111728779"
+            ],
+            [
+                "37b1894682d9f01e"
+            ]
+        ]
+    },
+    {
+        "id": "37b1894682d9f01e",
+        "type": "switch",
+        "z": "07021e24ebc3f637",
+        "name": "error type",
+        "property": "errors",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "not be found",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1090,
+        "y": 740,
+        "wires": [
+            [
+                "c59a1fbb53b16ddd"
+            ],
+            [
+                "1159a6bff26ed725"
+            ]
+        ]
+    },
+    {
+        "id": "c59a1fbb53b16ddd",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 38",
+        "mode": "link",
+        "links": [
+            "e36669525c3d404c"
+        ],
+        "x": 1245,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "1159a6bff26ed725",
+        "type": "link out",
+        "z": "07021e24ebc3f637",
+        "name": "link out 39",
+        "mode": "link",
+        "links": [
+            "ddf91e6188e9b20d"
+        ],
+        "x": 1245,
+        "y": 760,
+        "wires": []
     },
     {
         "id": "1f5e86cf01c16650",

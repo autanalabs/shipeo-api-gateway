@@ -688,9 +688,9 @@
     },
     "autana-jsonata-transform": {
         "name": "autana-jsonata-transform",
-        "version": "1.1.0",
+        "version": "2.0.2",
         "local": true,
-        "user": false,
+        "user": true,
         "nodes": {
             "transform": {
                 "name": "transform",
@@ -701,7 +701,7 @@
                 "local": true,
                 "user": false,
                 "module": "autana-jsonata-transform",
-                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-transform/transform.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-jsonata-transform/transform.js"
             }
         }
     }
