@@ -667,25 +667,6 @@
             }
         }
     },
-    "node-red-contrib-transform": {
-        "name": "node-red-contrib-transform",
-        "version": "1.1.0",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "transform": {
-                "name": "transform",
-                "types": [
-                    "transform"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-transform",
-                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-transform/transform.js"
-            }
-        }
-    },
     "autana-jsonata-transform": {
         "name": "autana-jsonata-transform",
         "version": "2.0.2",
