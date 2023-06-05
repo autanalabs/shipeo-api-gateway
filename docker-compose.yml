@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: autana-apigateway:latest
+    ports:
+      - "80:80"
+      - "10978:10978"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
