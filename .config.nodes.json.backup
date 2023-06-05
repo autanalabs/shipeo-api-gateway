@@ -666,5 +666,24 @@
                 "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-api-gateway/subflow.js"
             }
         }
+    },
+    "autana-jsonata-transform": {
+        "name": "autana-jsonata-transform",
+        "version": "2.0.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "transform": {
+                "name": "transform",
+                "types": [
+                    "com.autana.jsonata"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "autana-jsonata-transform",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-jsonata-transform/transform.js"
+            }
+        }
     }
 }

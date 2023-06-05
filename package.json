@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "autana-api-gateway": "~1.0.3",
-        "autana-jsonata-transform": "^2.0.2"
+        "autana-jsonata-transform": "^2.0.2",
+        "node-red-contrib-http-custom-port": "^0.0.11"
     }
 }

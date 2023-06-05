@@ -685,5 +685,35 @@
                 "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-jsonata-transform/transform.js"
             }
         }
+    },
+    "node-red-contrib-http-custom-port": {
+        "name": "node-red-contrib-http-custom-port",
+        "version": "0.0.11",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "node-red-contrib-http-custom-port": {
+                "name": "node-red-contrib-http-custom-port",
+                "types": [
+                    "node-red-contrib-http-custom-port"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-http-custom-port",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-http-custom-port/node-red-contrib-http-custom-port.js"
+            },
+            "http request update": {
+                "name": "http request update",
+                "types": [
+                    "http request update"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-http-custom-port",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-http-custom-port/21-httprequest-update.js"
+            }
+        }
     }
 }
