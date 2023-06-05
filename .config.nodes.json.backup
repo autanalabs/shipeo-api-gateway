@@ -1,7 +1,7 @@
 {
     "node-red": {
         "name": "node-red",
-        "version": "3.0.2",
+        "version": "3.0.2-git",
         "local": false,
         "user": false,
         "nodes": {
@@ -14,7 +14,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/05-junction.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/05-junction.js"
             },
             "inject": {
                 "name": "inject",
@@ -25,7 +25,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/20-inject.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/20-inject.js"
             },
             "debug": {
                 "name": "debug",
@@ -36,7 +36,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/21-debug.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/21-debug.js"
             },
             "complete": {
                 "name": "complete",
@@ -47,7 +47,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/24-complete.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/24-complete.js"
             },
             "catch": {
                 "name": "catch",
@@ -58,7 +58,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/25-catch.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/25-catch.js"
             },
             "status": {
                 "name": "status",
@@ -69,7 +69,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/25-status.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/25-status.js"
             },
             "link": {
                 "name": "link",
@@ -82,7 +82,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/60-link.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/60-link.js"
             },
             "comment": {
                 "name": "comment",
@@ -93,7 +93,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/90-comment.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/90-comment.js"
             },
             "unknown": {
                 "name": "unknown",
@@ -104,7 +104,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/common/98-unknown.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/common/98-unknown.js"
             },
             "function": {
                 "name": "function",
@@ -115,7 +115,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/10-function.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/10-function.js"
             },
             "switch": {
                 "name": "switch",
@@ -126,7 +126,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/10-switch.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/10-switch.js"
             },
             "change": {
                 "name": "change",
@@ -137,7 +137,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/15-change.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/15-change.js"
             },
             "range": {
                 "name": "range",
@@ -148,7 +148,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/16-range.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/16-range.js"
             },
             "template": {
                 "name": "template",
@@ -159,7 +159,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/80-template.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/80-template.js"
             },
             "delay": {
                 "name": "delay",
@@ -170,7 +170,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/89-delay.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/89-delay.js"
             },
             "trigger": {
                 "name": "trigger",
@@ -181,7 +181,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/89-trigger.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/89-trigger.js"
             },
             "exec": {
                 "name": "exec",
@@ -192,7 +192,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/90-exec.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/90-exec.js"
             },
             "rbe": {
                 "name": "rbe",
@@ -203,7 +203,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/function/rbe.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/function/rbe.js"
             },
             "tls": {
                 "name": "tls",
@@ -214,7 +214,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/05-tls.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/05-tls.js"
             },
             "httpproxy": {
                 "name": "httpproxy",
@@ -225,20 +225,20 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/06-httpproxy.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/06-httpproxy.js"
             },
             "mqtt": {
                 "name": "mqtt",
                 "types": [
+                    "mqtt-broker",
                     "mqtt in",
-                    "mqtt out",
-                    "mqtt-broker"
+                    "mqtt out"
                 ],
                 "enabled": true,
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/10-mqtt.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/10-mqtt.js"
             },
             "httpin": {
                 "name": "httpin",
@@ -250,7 +250,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/21-httpin.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/21-httpin.js"
             },
             "httprequest": {
                 "name": "httprequest",
@@ -261,21 +261,21 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/21-httprequest.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/21-httprequest.js"
             },
             "websocket": {
                 "name": "websocket",
                 "types": [
-                    "websocket in",
-                    "websocket out",
                     "websocket-listener",
-                    "websocket-client"
+                    "websocket-client",
+                    "websocket in",
+                    "websocket out"
                 ],
                 "enabled": true,
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/22-websocket.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/22-websocket.js"
             },
             "tcpin": {
                 "name": "tcpin",
@@ -288,7 +288,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/31-tcpin.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/31-tcpin.js"
             },
             "udp": {
                 "name": "udp",
@@ -300,7 +300,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/network/32-udp.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/network/32-udp.js"
             },
             "CSV": {
                 "name": "CSV",
@@ -311,7 +311,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/parsers/70-CSV.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/parsers/70-CSV.js"
             },
             "HTML": {
                 "name": "HTML",
@@ -322,7 +322,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/parsers/70-HTML.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/parsers/70-HTML.js"
             },
             "JSON": {
                 "name": "JSON",
@@ -333,7 +333,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/parsers/70-JSON.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/parsers/70-JSON.js"
             },
             "XML": {
                 "name": "XML",
@@ -344,7 +344,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/parsers/70-XML.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/parsers/70-XML.js"
             },
             "YAML": {
                 "name": "YAML",
@@ -355,7 +355,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/parsers/70-YAML.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/parsers/70-YAML.js"
             },
             "split": {
                 "name": "split",
@@ -367,7 +367,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/sequence/17-split.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/sequence/17-split.js"
             },
             "sort": {
                 "name": "sort",
@@ -378,7 +378,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/sequence/18-sort.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/sequence/18-sort.js"
             },
             "batch": {
                 "name": "batch",
@@ -389,7 +389,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/sequence/19-batch.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/sequence/19-batch.js"
             },
             "file": {
                 "name": "file",
@@ -401,7 +401,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/storage/10-file.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/storage/10-file.js"
             },
             "watch": {
                 "name": "watch",
@@ -412,7 +412,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/@node-red/nodes/core/storage/23-watch.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/@node-red/nodes/core/storage/23-watch.js"
             }
         }
     },
@@ -458,12 +458,13 @@
     "node-red-contrib-appwrite": {
         "name": "node-red-contrib-appwrite",
         "version": "0.0.12",
-        "local": false,
-        "user": false,
+        "local": true,
+        "user": true,
         "nodes": {
             "appwrite": {
                 "name": "appwrite",
                 "types": [
+                    "appwrite-config",
                     "com.autana.readTable",
                     "com.autana.insertRow",
                     "com.autana.updateRow",
@@ -471,29 +472,28 @@
                     "com.autana.readSchema",
                     "com.autana.listTables",
                     "com.autana.createTable",
+                    "com.autana.deleteTable",
                     "com.autana.StringColumn",
                     "com.autana.IntegerColumn",
                     "com.autana.FloatColumn",
                     "com.autana.BooleanColumn",
                     "com.autana.deleteColumn",
                     "com.autana.createIndex",
-                    "com.autana.deleteIndex",
-                    "appwrite-config",
-                    "com.autana.deleteTable"
+                    "com.autana.deleteIndex"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-appwrite",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-appwrite/appwrite.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-appwrite/appwrite.js"
             }
         }
     },
     "node-red-contrib-json-schema": {
         "name": "node-red-contrib-json-schema",
         "version": "0.0.1",
-        "local": false,
-        "user": false,
+        "local": true,
+        "user": true,
         "nodes": {
             "json-schema": {
                 "name": "json-schema",
@@ -501,18 +501,18 @@
                     "json-schema"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-json-schema",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-json-schema/schema.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-json-schema/schema.js"
             }
         }
     },
     "node-red-contrib-jwt": {
         "name": "node-red-contrib-jwt",
         "version": "0.1.0",
-        "local": false,
-        "user": false,
+        "local": true,
+        "user": true,
         "nodes": {
             "jwt": {
                 "name": "jwt",
@@ -521,18 +521,18 @@
                     "jwt verify"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-jwt",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-jwt/jwt.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-jwt/jwt.js"
             }
         }
     },
     "node-red-contrib-key-value-store": {
         "name": "node-red-contrib-key-value-store",
         "version": "0.1.8",
-        "local": false,
-        "user": false,
+        "local": true,
+        "user": true,
         "nodes": {
             "key-value-store": {
                 "name": "key-value-store",
@@ -540,10 +540,10 @@
                     "key-value-store"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-key-value-store",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-key-value-store/nodes/store.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-key-value-store/nodes/store.js"
             },
             "key-value-read": {
                 "name": "key-value-read",
@@ -551,10 +551,10 @@
                     "key-value-read"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-key-value-store",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-key-value-store/nodes/read.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-key-value-store/nodes/read.js"
             },
             "key-value-write": {
                 "name": "key-value-write",
@@ -562,10 +562,10 @@
                     "key-value-write"
                 ],
                 "enabled": true,
-                "local": false,
+                "local": true,
                 "user": false,
                 "module": "node-red-contrib-key-value-store",
-                "file": "/Users/gibi/workspaces/autanaLabs/integrator/dist/mac-arm64/Autana.app/Contents/Resources/app.asar/node_modules/node-red-contrib-key-value-store/nodes/write.js"
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-key-value-store/nodes/write.js"
             }
         }
     },
@@ -683,6 +683,36 @@
                 "user": false,
                 "module": "autana-jsonata-transform",
                 "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/autana-jsonata-transform/transform.js"
+            }
+        }
+    },
+    "node-red-contrib-http-custom-port": {
+        "name": "node-red-contrib-http-custom-port",
+        "version": "0.0.11",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "node-red-contrib-http-custom-port": {
+                "name": "node-red-contrib-http-custom-port",
+                "types": [
+                    "node-red-contrib-http-custom-port"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-http-custom-port",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-http-custom-port/node-red-contrib-http-custom-port.js"
+            },
+            "http request update": {
+                "name": "http request update",
+                "types": [
+                    "http request update"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-http-custom-port",
+                "file": "/Users/gibi/workspaces/autana/autana-appwrite-api-gateway/node_modules/node-red-contrib-http-custom-port/21-httprequest-update.js"
             }
         }
     }

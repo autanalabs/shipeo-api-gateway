@@ -1,11 +1,26 @@
 {
-    "name": "node-red-project",
-    "description": "A Node-RED Project",
+    "name": "autana-appwrite-api-gateway",
+    "description": "API Gateway for Appwrite",
     "version": "0.0.1",
-    "private": true,
+    "author": "Gilbert Gonzalez <gb@autanalabs.com>",
+    "main": "index.js",
     "dependencies": {
         "autana-api-gateway": "~1.0.3",
         "autana-jsonata-transform": "^2.0.2",
-        "node-red-contrib-http-custom-port": "^0.0.11"
+        "node-red-contrib-http-custom-port": "^0.0.11",
+        "cors-anywhere": "^0.4.4",
+        "express": "^4.18.1",
+        "localtunnel": "^2.0.2",
+        "node-red": "^3.0.2",
+        "node-red-contrib-appwrite": "^0.0.12",
+        "node-red-contrib-json-schema": "~0.0.1",
+        "node-red-contrib-jwt": "~0.1.0",
+        "node-red-contrib-key-value-store": "^0.1.8",
+        "passport-jwt": "^4.0.0",
+        "public-ip": "^6.0.1",
+        "ws": "^8.8.0"
+    },
+     "scripts": {
+        "start": "node ."
     }
 }
