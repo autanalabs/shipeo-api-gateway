@@ -441,8 +441,8 @@
         "id": "8b9887394539e844",
         "type": "appwrite-config",
         "endpoint": "https://cloud.appwrite.io/v1",
-        "project": "api-gateway",
-        "apikey": "7af2626e01797a2f1598c3eeff7b1f24c7b12fb6a03f485ca8f94dfa193e80cb1063d09dec892023d3270d157f8cca092d4b04618c9a3384ec5cbc9695aec458bf40d272b1bb4e3eaf6507ef338d6e9501a06ec5077855e70c0685cb6de77aca260e29b4b89c96d686fba6a55ac68a1d219b9dc1144a21d754bddfaec9906b8d"
+        "project": "shipeo",
+        "apikey": "24261807a7e1484f59597cc3d917b7125a6529e5f46183d1bc280dd8491a8dc356384622d0deb59901039e016a14e8f83516b1079a312151af151f697970d47ea1c1ee1fe076d81d65aed9d9b2ff8a2faf7e349838aacbadbd309dd02834cf711630b96df592bd5699db9869704759d14139edccac51cd54f1095e82ed49af07"
     },
     {
         "id": "25e3266b912fbed8",
@@ -5284,7 +5284,8 @@
         "wires": [
             [
                 "8e52da349c1bcb29",
-                "86575a705f72af13"
+                "86575a705f72af13",
+                "3b7c8c5f9387b3c7"
             ]
         ]
     },
@@ -5312,7 +5313,7 @@
         "name": "",
         "statusCode": "202",
         "headers": {},
-        "x": 420,
+        "x": 400,
         "y": 100,
         "wires": []
     },
